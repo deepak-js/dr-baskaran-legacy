@@ -325,7 +325,7 @@ export default function Home() {
             >
               <div className="aspect-[4/3] overflow-hidden rounded-sm shadow-elevated">
                 <img
-                  src={require("@/assets/thanjavur-temple.jpg").default || require("@/assets/thanjavur-temple.jpg")}
+                  src={thanjavurTemple}
                   alt="Thanjavur Temple - Cultural heritage of Tamil Nadu"
                   className="w-full h-full object-cover"
                 />
