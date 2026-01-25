@@ -1,6 +1,8 @@
 import { ReactNode } from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import { StructuredData } from "@/components/SEO";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
 
 interface LayoutProps {
   children: ReactNode;
@@ -9,9 +11,11 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col">
+      <StructuredData />
       <Header />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1" itemScope itemType="https://schema.org/WebPage">{children}</main>
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }

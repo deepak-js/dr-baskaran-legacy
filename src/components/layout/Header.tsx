@@ -32,8 +32,21 @@ export function Header() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    
+    // Throttle scroll events for better performance
+    let ticking = false;
+    const optimizedScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    
+    window.addEventListener("scroll", optimizedScroll, { passive: true });
+    return () => window.removeEventListener("scroll", optimizedScroll);
   }, []);
 
   useEffect(() => {
@@ -43,15 +56,23 @@ export function Header() {
 
   return (
     <>
-      <header
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
             ? "bg-background/98 backdrop-blur-md shadow-soft py-2"
             : "bg-transparent py-4"
         }`}
       >
-        {/* Top accent line */}
-        <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent opacity-60" />
+        {/* Top accent line with animation */}
+        <motion.div 
+          className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent"
+          initial={{ opacity: 0.6 }}
+          animate={{ opacity: isScrolled ? 0.8 : 0.6 }}
+          transition={{ duration: 0.3 }}
+        />
         
         <div className="container-institutional">
           <div className="flex items-center justify-between h-16 md:h-20">
@@ -159,7 +180,7 @@ export function Header() {
             </div>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       {/* Mobile Menu */}
       <AnimatePresence>

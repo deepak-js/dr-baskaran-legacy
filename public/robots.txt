@@ -1,14 +1,73 @@
+# Robots.txt for Raga Dental - Dr. Baskaran
+# Best Dentist and Implantologist in Thanjavur, Tamil Nadu
+
+# Allow all major search engines and AI crawlers
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 0
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 0
 
+User-agent: Slurp
+Allow: /
+Crawl-delay: 0
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 0
+
+# AI and LLM Crawlers
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 0
+
+User-agent: ChatGPT-User
+Allow: /
+Crawl-delay: 0
+
+User-agent: anthropic-ai
+Allow: /
+Crawl-delay: 0
+
+User-agent: Claude-Web
+Allow: /
+Crawl-delay: 0
+
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Applebot-Extended
+Allow: /
+Crawl-delay: 0
+
+User-agent: CCBot
+Allow: /
+Crawl-delay: 0
+
+# Social Media Crawlers
 User-agent: Twitterbot
 Allow: /
+Crawl-delay: 0
 
 User-agent: facebookexternalhit
 Allow: /
+Crawl-delay: 0
 
+User-agent: LinkedInBot
+Allow: /
+Crawl-delay: 0
+
+# Default rule - allow all
 User-agent: *
 Allow: /
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://www.ragadental.com/sitemap.xml
+
+# Disallow admin or private areas (if any)
+# Disallow: /admin/
+# Disallow: /private/

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import implantHero from "@/assets/implant-hero.jpg";
 
@@ -12,6 +13,11 @@ const fadeIn = {
 export default function Implantology() {
   return (
     <Layout>
+      <SEO
+        title="Dental Implants in Thanjavur | Best Implantologist Dr. Baskaran - Raga Dental"
+        description="Best dental implants in Thanjavur by Dr. Baskaran. Navigation-guided and semi-robotic implant systems for precision, longevity, and biological harmony. 25+ years of implantology expertise at Raga Dental."
+        keywords="dental implants Thanjavur, implantologist Thanjavur, Dr. Baskaran implants, navigation-guided implants Thanjavur, semi-robotic implants Thanjavur, best implantologist Thanjavur, dental implant surgery Thanjavur"
+      />
       {/* Hero with Image */}
       <section className="pt-24 relative overflow-hidden">
         <div className="absolute inset-0 h-[60vh]">

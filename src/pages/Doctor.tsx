@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import drBaskaranClinic from "@/assets/dr-baskaran-clinic.jpg";
 
 const fadeIn = {
@@ -10,8 +11,13 @@ const fadeIn = {
 export default function Doctor() {
   return (
     <Layout>
+      <SEO
+        title="Dr. Baskaran - Best Dentist & Implantologist in Thanjavur | 25+ Years Experience"
+        description="Dr. Baskaran is the best dentist and implantologist in Thanjavur, Tamil Nadu. With 25+ years of clinical experience, NYU training, and expertise in dental implants, laser dentistry, and digital dentistry. Founder of Raga Dental."
+        keywords="Dr. Baskaran, best dentist Thanjavur, best implantologist Thanjavur, dentist Thanjavur, dental implants Thanjavur, NYU trained dentist, laser dentistry Thanjavur, digital dentistry Thanjavur, experienced dentist Thanjavur"
+      />
       {/* Hero */}
-      <section className="pt-32 pb-16">
+      <section className="pt-32 pb-16" itemScope itemType="https://schema.org/Person">
         <div className="container-institutional">
           <motion.div
             initial="hidden"
@@ -21,11 +27,14 @@ export default function Doctor() {
             className="max-w-3xl"
           >
             <p className="label-caps mb-4">The Doctor</p>
-            <h1 className="heading-display mb-6">Dr. Baskaran</h1>
-            <p className="body-large text-muted-foreground">
+            <h1 className="heading-display mb-6" itemProp="name">Dr. Baskaran</h1>
+            <p className="body-large text-muted-foreground" itemProp="description">
               A clinician, not a marketer. His reputation is built on outcomes,
-              not adjectives.
+              not adjectives. The best dentist and implantologist in Thanjavur, Tamil Nadu.
             </p>
+            <meta itemProp="jobTitle" content="Chief Implantologist and Dentist" />
+            <meta itemProp="worksFor" content="Raga Dental" />
+            <meta itemProp="address" content="Thanjavur, Tamil Nadu, India" />
           </motion.div>
         </div>
       </section>
@@ -43,8 +52,10 @@ export default function Doctor() {
               <div className="aspect-[3/4] overflow-hidden bg-muted">
                 <img
                   src={drBaskaranClinic}
-                  alt="Dr. Baskaran at Raga Dental"
+                  alt="Dr. Baskaran, Best Dentist and Implantologist at Raga Dental, Thanjavur"
+                  title="Dr. Baskaran - Best Dentist in Thanjavur"
                   className="w-full h-full object-cover object-top"
+                  itemProp="image"
                 />
               </div>
             </motion.div>
@@ -123,14 +134,13 @@ export default function Doctor() {
               <h2 className="heading-section mb-6">
                 Learning from the World's Best
               </h2>
-              <div className="space-y-6 body-editorial">
+              <div className="space-y-6 body-editorial" itemScope itemType="https://schema.org/EducationalOrganization">
                 <p>
-                  Trained at world-renowned institutions including New York
-                  University and Unicamillus University, Italy.
+                  Trained at world-renowned institutions including <span itemProp="name">New York University</span> and <span itemProp="name">Unicamillus University, Italy</span>. Dr. Baskaran's international training makes him one of the best dentists in Thanjavur.
                 </p>
                 <p>
                   Regular participant and presenter at international dental
-                  conferences with global knowledge exchange.
+                  conferences with global knowledge exchange. His expertise in implantology, laser dentistry, and digital dentistry positions him as the leading dentist in Thanjavur, Tamil Nadu.
                 </p>
               </div>
             </motion.div>
@@ -169,9 +179,40 @@ export default function Doctor() {
             </h2>
             <p className="body-large text-primary-foreground/80">
               Dr. Baskaran's work has enabled generational progress, positioning
-              Thanjavur as a destination for global-grade dental care.
+              Thanjavur as a destination for global-grade dental care. As the best dentist and implantologist in Thanjavur, he has transformed dental healthcare in South Tamil Nadu.
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Expertise Keywords Section for SEO */}
+      <section className="section-padding bg-muted/30">
+        <div className="container-institutional">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="heading-section text-center mb-8">
+              Why Dr. Baskaran is the <span className="text-accent">Best Dentist in Thanjavur</span>
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                "Best Dentist in Thanjavur",
+                "Best Implantologist in Thanjavur",
+                "Dental Implants Specialist Thanjavur",
+                "Laser Dentistry Expert Thanjavur",
+                "Digital Dentistry Pioneer Thanjavur",
+                "NYU Trained Dentist Thanjavur",
+                "Experienced Dentist Thanjavur (25+ Years)",
+                "International Dental Training",
+                "Dental Tourism Specialist Thanjavur",
+                "Advanced Dental Technology Thanjavur",
+                "Navigation-Guided Implants Thanjavur",
+                "Semi-Robotic Implant Systems Thanjavur"
+              ].map((expertise, index) => (
+                <div key={index} className="bg-card p-4 rounded-sm border-l-2 border-accent">
+                  <p className="font-serif text-sm">{expertise}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     </Layout>

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import laserHero from "@/assets/laser-dentistry-hero.jpg";
 
@@ -12,6 +13,11 @@ const fadeIn = {
 export default function LaserDentistry() {
   return (
     <Layout>
+      <SEO
+        title="Laser Dentistry in Thanjavur | Pain-Free Dental Treatment by Dr. Baskaran"
+        description="Laser dentistry in Thanjavur by Dr. Baskaran at Raga Dental. Pain-free, bloodless procedures with faster healing. Pioneer of laser dentistry in South Tamil Nadu. Best laser dentist in Thanjavur."
+        keywords="laser dentistry Thanjavur, pain-free dentistry Thanjavur, Dr. Baskaran laser dentistry, best laser dentist Thanjavur, bloodless dental procedures Thanjavur"
+      />
       {/* Hero with Image */}
       <section className="pt-24 relative overflow-hidden">
         <div className="absolute inset-0 h-[60vh]">

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import thanjavurTemple from "@/assets/thanjavur-temple.jpg";
 
@@ -12,6 +13,11 @@ const fadeIn = {
 export default function DentalTourism() {
   return (
     <Layout>
+      <SEO
+        title="Dental Tourism in Thanjavur | World-Class Dental Care by Dr. Baskaran - Raga Dental"
+        description="Dental tourism in Thanjavur, Tamil Nadu. Patients from Europe, Australia, New Zealand, and India travel to Raga Dental for world-class dental treatment by Dr. Baskaran. Best dental tourism destination in South India."
+        keywords="dental tourism Thanjavur, dental tourism India, dental tourism Tamil Nadu, international dental patients Thanjavur, dental travel Thanjavur, affordable dental care India"
+      />
       {/* Hero with Image */}
       <section className="pt-24 relative overflow-hidden">
         <div className="absolute inset-0 h-[70vh]">

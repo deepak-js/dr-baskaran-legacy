@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import digitalHero from "@/assets/digital-dentistry-hero.jpg";
 
@@ -12,6 +13,11 @@ const fadeIn = {
 export default function DigitalDentistry() {
   return (
     <Layout>
+      <SEO
+        title="Digital Dentistry in Thanjavur | Advanced Digital Dental Technology - Dr. Baskaran"
+        description="Digital dentistry in Thanjavur by Dr. Baskaran at Raga Dental. Fully digital diagnostics and workflows ensuring precision, predictability, and safety. Best digital dentistry clinic in Thanjavur."
+        keywords="digital dentistry Thanjavur, digital dental technology Thanjavur, Dr. Baskaran digital dentistry, CAD/CAM dentistry Thanjavur, digital dental impressions Thanjavur"
+      />
       {/* Hero with Image */}
       <section className="pt-24 relative overflow-hidden">
         <div className="absolute inset-0 h-[60vh]">

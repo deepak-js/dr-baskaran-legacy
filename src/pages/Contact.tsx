@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -35,8 +36,13 @@ export default function Contact() {
 
   return (
     <Layout>
+      <SEO
+        title="Contact Dr. Baskaran - Best Dentist in Thanjavur | Raga Dental"
+        description="Contact Dr. Baskaran, the best dentist and implantologist in Thanjavur. Schedule a consultation at Raga Dental for dental implants, laser dentistry, and digital dentistry. Serving patients from India, Europe, Australia, and New Zealand."
+        keywords="contact Dr. Baskaran, Raga Dental contact, dentist Thanjavur contact, dental consultation Thanjavur, book appointment Thanjavur"
+      />
       {/* Hero */}
-      <section className="pt-32 pb-16">
+      <section className="pt-32 pb-16" itemScope itemType="https://schema.org/ContactPage">
         <div className="container-institutional">
           <motion.div
             initial="hidden"
@@ -46,10 +52,10 @@ export default function Contact() {
             className="max-w-3xl"
           >
             <p className="label-caps mb-4">Contact</p>
-            <h1 className="heading-display mb-6">Begin with Clarity</h1>
-            <p className="body-large text-muted-foreground">
+            <h1 className="heading-display mb-6" itemProp="headline">Begin with Clarity</h1>
+            <p className="body-large text-muted-foreground" itemProp="description">
               Schedule a consultation to discuss your dental health goals with
-              Dr. Baskaran.
+              Dr. Baskaran, the best dentist and implantologist in Thanjavur.
             </p>
           </motion.div>
         </div>
@@ -154,14 +160,14 @@ export default function Contact() {
               <h2 className="heading-subsection mb-8">Contact Information</h2>
 
               <div className="space-y-8">
-                <div>
+                <div itemScope itemType="https://schema.org/PostalAddress">
                   <h3 className="label-caps mb-3">Location</h3>
                   <p className="body-editorial">
-                    Raga Dental
+                    <span itemProp="name">Raga Dental</span>
                     <br />
-                    Thanjavur, Tamil Nadu
+                    <span itemProp="addressLocality">Thanjavur</span>, <span itemProp="addressRegion">Tamil Nadu</span>
                     <br />
-                    India
+                    <span itemProp="addressCountry">India</span>
                   </p>
                 </div>
 
