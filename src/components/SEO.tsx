@@ -25,18 +25,29 @@ const defaultSEO = {
 
 export function SEO({ title, description, keywords, image, type, noindex, canonical }: SEOProps) {
   const location = useLocation();
-  const currentUrl = `${BASE_URL}${location.pathname}`;
+  
+  // Use BASE_URL for canonical to ensure consistent canonical URLs
+  const canonicalPath = `${BASE_URL}${location.pathname}`;
   
   const seoTitle = title || defaultSEO.title;
   const seoDescription = description || defaultSEO.description;
   const seoKeywords = keywords || defaultSEO.keywords;
   const seoImage = image || defaultSEO.image;
   const seoType = type || defaultSEO.type;
-  const canonicalUrl = canonical || currentUrl;
+  const canonicalUrl = canonical || canonicalPath;
+  
+  // Ensure title doesn't exceed 60 characters for better SEO (but allow up to 70 for display)
+  const optimizedTitle = seoTitle.length > 70 ? seoTitle.substring(0, 67) + '...' : seoTitle;
 
   useEffect(() => {
-    // Update document title
-    document.title = seoTitle;
+    // Use actual current URL for sharing (preserves actual domain and query params)
+    // This is calculated inside useEffect to ensure it's always current
+    const currentUrl = typeof window !== 'undefined' 
+      ? window.location.href 
+      : `${BASE_URL}${location.pathname}`;
+    
+    // Update document title (use optimized version)
+    document.title = optimizedTitle;
 
     // Update or create meta tags
     const updateMetaTag = (name: string, content: string, attribute: string = "name") => {
@@ -54,17 +65,23 @@ export function SEO({ title, description, keywords, image, type, noindex, canoni
     updateMetaTag("keywords", seoKeywords);
     updateMetaTag("robots", noindex ? "noindex, nofollow" : "index, follow");
     
-    // Open Graph tags
-    updateMetaTag("og:title", seoTitle, "property");
+    // Open Graph tags - use actual current URL for sharing
+    updateMetaTag("og:title", optimizedTitle, "property");
     updateMetaTag("og:description", seoDescription, "property");
     updateMetaTag("og:image", seoImage, "property");
     updateMetaTag("og:url", currentUrl, "property");
     updateMetaTag("og:type", seoType, "property");
+    updateMetaTag("og:site_name", "Raga Dental - Dr. Baskaran", "property");
+    updateMetaTag("og:locale", "en_US", "property");
+    updateMetaTag("og:locale:alternate", "en_IN", "property");
     
     // Twitter Card tags
-    updateMetaTag("twitter:title", seoTitle);
+    updateMetaTag("twitter:card", "summary_large_image");
+    updateMetaTag("twitter:title", optimizedTitle);
     updateMetaTag("twitter:description", seoDescription);
     updateMetaTag("twitter:image", seoImage);
+    updateMetaTag("twitter:url", currentUrl);
+    updateMetaTag("twitter:site", "@ragadental", "name");
     
     // Canonical URL
     let canonicalLink = document.querySelector("link[rel='canonical']") as HTMLLinkElement;
@@ -77,7 +94,15 @@ export function SEO({ title, description, keywords, image, type, noindex, canoni
 
     // Update HTML lang and itemscope if needed
     document.documentElement.setAttribute("lang", "en");
-  }, [seoTitle, seoDescription, seoKeywords, seoImage, seoType, currentUrl, canonicalUrl, noindex]);
+    
+    // Add viewport meta tag if missing
+    if (!document.querySelector('meta[name="viewport"]')) {
+      const viewport = document.createElement("meta");
+      viewport.name = "viewport";
+      viewport.content = "width=device-width, initial-scale=1.0";
+      document.head.appendChild(viewport);
+    }
+  }, [seoTitle, seoDescription, seoKeywords, seoImage, seoType, canonicalUrl, noindex, location.pathname]);
 
   return null;
 }
@@ -306,13 +331,36 @@ export function StructuredData() {
     const existingScripts = document.querySelectorAll('script[type="application/ld+json"]');
     existingScripts.forEach(script => script.remove());
 
+    // Blog Schema (if on blog page)
+    const blogSchema = location.pathname.startsWith('/blog') ? {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Dr. Baskaran - Raga Dental Blog",
+      "description": "Expert dental insights, articles, and educational content from Dr. Baskaran at Raga Dental, Thanjavur.",
+      "url": "https://www.ragadental.com/blog",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Raga Dental",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.ragadental.com/logo.png"
+        }
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Dr. Baskaran",
+        "jobTitle": "Chief Implantologist"
+      }
+    } : null;
+
     // Add all schemas
     const schemas = [
       localBusinessSchema,
       personSchema,
       medicalBusinessSchema,
       breadcrumbSchema,
-      faqSchema
+      faqSchema,
+      ...(blogSchema ? [blogSchema] : [])
     ];
 
     schemas.forEach((schema, index) => {

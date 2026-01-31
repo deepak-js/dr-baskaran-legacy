@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { SocialLinks } from "@/components/ui/social-links";
 
 const navigation = {
   expertise: [
@@ -13,6 +14,7 @@ const navigation = {
   ],
   resources: [
     { name: "Outcomes", href: "/outcomes" },
+    { name: "Blog", href: "/blog" },
     { name: "Insights", href: "/insights" },
     { name: "Contact", href: "/contact" },
   ],
@@ -33,9 +35,10 @@ export function Footer() {
                 Raga Dental, Thanjavur
               </span>
             </div>
-            <p className="text-sm text-background/70 leading-relaxed max-w-xs">
+            <p className="text-sm text-background/70 leading-relaxed max-w-xs mb-6">
               Precision dentistry delivered with global standards, rooted in South India.
             </p>
+            <SocialLinks variant="minimal" size="sm" className="text-background/60" />
           </div>
 
           {/* Expertise */}

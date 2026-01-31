@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -30,6 +31,11 @@ const testimonials = [
 export default function Outcomes() {
   return (
     <Layout>
+      <SEO
+        title="Dental Treatment Outcomes & Results | Dr. Baskaran - Raga Dental"
+        description="View successful dental treatment outcomes and patient results from Dr. Baskaran at Raga Dental, Thanjavur. Real results from dental implants, laser dentistry, and digital dentistry procedures."
+        keywords="dental treatment outcomes Thanjavur, dental implant results, laser dentistry results, dental success stories Thanjavur, patient outcomes Raga Dental, dental treatment before after"
+      />
       {/* Hero */}
       <section className="pt-32 pb-16">
         <div className="container-institutional">

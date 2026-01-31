@@ -14,6 +14,8 @@ import DigitalDentistry from "./pages/DigitalDentistry";
 import DentalTourism from "./pages/DentalTourism";
 import Outcomes from "./pages/Outcomes";
 import Insights from "./pages/Insights";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
@@ -48,6 +50,8 @@ const App = () => {
             <Route path="/dental-tourism" element={<DentalTourism />} />
             <Route path="/outcomes" element={<Outcomes />} />
             <Route path="/insights" element={<Insights />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

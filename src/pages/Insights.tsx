@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -37,6 +38,11 @@ const insights = [
 export default function Insights() {
   return (
     <Layout>
+      <SEO
+        title="Dental Insights & Education | Dr. Baskaran - Raga Dental"
+        description="Expert dental insights and educational content from Dr. Baskaran at Raga Dental, Thanjavur. Learn about dental implants, laser dentistry, digital dentistry, and making informed dental decisions."
+        keywords="dental insights, dental education, dental blog Thanjavur, dental implant information, laser dentistry information, dental decision making, dental knowledge"
+      />
       {/* Hero */}
       <section className="pt-32 pb-16">
         <div className="container-institutional">

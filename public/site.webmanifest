@@ -1,0 +1,23 @@
+{
+  "name": "Dr. Baskaran - Raga Dental",
+  "short_name": "Raga Dental",
+  "description": "Best Dentist & Implantologist in Thanjavur, Tamil Nadu",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#1a1a1a",
+  "background_color": "#1a1a1a",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
+}
+

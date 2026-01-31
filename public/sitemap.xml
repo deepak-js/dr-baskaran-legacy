@@ -7,7 +7,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://www.ragadental.com/</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2024-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -15,7 +15,7 @@
   <!-- Doctor Page -->
   <url>
     <loc>https://www.ragadental.com/doctor</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2024-12-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -23,7 +23,7 @@
   <!-- Institution Page -->
   <url>
     <loc>https://www.ragadental.com/institution</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2024-12-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -31,7 +31,7 @@
   <!-- Implantology -->
   <url>
     <loc>https://www.ragadental.com/implantology</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2024-12-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -39,7 +39,7 @@
   <!-- Laser Dentistry -->
   <url>
     <loc>https://www.ragadental.com/laser-dentistry</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2024-12-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -47,7 +47,7 @@
   <!-- Digital Dentistry -->
   <url>
     <loc>https://www.ragadental.com/digital-dentistry</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2024-12-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -55,7 +55,7 @@
   <!-- Dental Tourism -->
   <url>
     <loc>https://www.ragadental.com/dental-tourism</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2024-12-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -63,7 +63,7 @@
   <!-- Outcomes -->
   <url>
     <loc>https://www.ragadental.com/outcomes</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2024-12-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -71,7 +71,7 @@
   <!-- Insights -->
   <url>
     <loc>https://www.ragadental.com/insights</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2024-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -79,9 +79,55 @@
   <!-- Contact -->
   <url>
     <loc>https://www.ragadental.com/contact</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2024-12-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  
+  <!-- Blog -->
+  <url>
+    <loc>https://www.ragadental.com/blog</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Blog Posts -->
+  <url>
+    <loc>https://www.ragadental.com/blog/understanding-dental-implant-longevity</loc>
+    <lastmod>2024-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ragadental.com/blog/science-behind-pain-free-dentistry</loc>
+    <lastmod>2024-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ragadental.com/blog/digital-planning-future-dental-care</loc>
+    <lastmod>2024-12-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ragadental.com/blog/long-term-oral-health-prevention</loc>
+    <lastmod>2024-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ragadental.com/blog/dental-tourism-thanjavur</loc>
+    <lastmod>2024-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ragadental.com/blog/semi-robotic-implant-systems</loc>
+    <lastmod>2024-11-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   
 </urlset>

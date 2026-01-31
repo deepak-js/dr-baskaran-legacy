@@ -19,6 +19,7 @@ const navigation = [
   },
   { name: "Dental Tourism", href: "/dental-tourism" },
   { name: "Outcomes", href: "/outcomes" },
+  { name: "Blog", href: "/blog" },
   { name: "Insights", href: "/insights" },
 ];
 

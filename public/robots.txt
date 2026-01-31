@@ -6,6 +6,10 @@ User-agent: Googlebot
 Allow: /
 Crawl-delay: 0
 
+User-agent: Googlebot-Image
+Allow: /
+Crawl-delay: 0
+
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 0
@@ -15,6 +19,14 @@ Allow: /
 Crawl-delay: 0
 
 User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 0
+
+User-agent: YandexBot
 Allow: /
 Crawl-delay: 0
 
@@ -47,6 +59,14 @@ User-agent: CCBot
 Allow: /
 Crawl-delay: 0
 
+User-agent: Google-Extended
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bytespider
+Allow: /
+Crawl-delay: 0
+
 # Social Media Crawlers
 User-agent: Twitterbot
 Allow: /
@@ -57,6 +77,10 @@ Allow: /
 Crawl-delay: 0
 
 User-agent: LinkedInBot
+Allow: /
+Crawl-delay: 0
+
+User-agent: WhatsApp
 Allow: /
 Crawl-delay: 0
 
