@@ -249,7 +249,7 @@ export default function Home() {
       {/* Origin to Impact */}
       <section className="section-padding gradient-gold-subtle">
         <div className="container-institutional">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
