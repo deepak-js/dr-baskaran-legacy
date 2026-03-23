@@ -321,7 +321,7 @@ export default function Home() {
               It is a repeatable clinical outcome achieved through technology,
               discipline, and experience.
             </p>
-            <div className="w-12 h-0.5 bg-accent mx-auto mt-8" />
+            <div className="w-12 h-0.5 bg-accent mx-auto mt-6" />
           </motion.div>
         </div>
       </section>
