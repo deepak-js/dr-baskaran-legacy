@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, ImgHTMLAttributes } from "react";
 import { motion } from "framer-motion";
 
-interface LazyImageProps extends ImgHTMLAttributes<HTMLImageElement> {
+interface LazyImageProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, 'onAnimationStart' | 'onDragStart' | 'onDragEnd' | 'onDrag'> {
   src: string;
   alt: string;
   className?: string;

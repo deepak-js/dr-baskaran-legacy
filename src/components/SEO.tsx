@@ -214,8 +214,7 @@ export function StructuredData() {
         "description": "International dental education"
       }
     ],
-    "award": "Pioneer of laser dentistry in South Tamil Nadu",
-    "description": "25+ years of clinical practice, early adopter of navigation-guided and semi-robotic implants"
+    "award": "Pioneer of laser dentistry in South Tamil Nadu"
   };
 
   // Medical Business Schema
