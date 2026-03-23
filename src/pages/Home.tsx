@@ -182,7 +182,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-10 lg:mb-16"
           >
             <p className="label-caps mb-4">Centers of Excellence</p>
             <h2 className="heading-section">Three Pillars of <span className="italic text-accent">Precision</span> Care</h2>
