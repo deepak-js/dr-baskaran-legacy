@@ -143,7 +143,7 @@ export default function Home() {
       <section className="py-10 lg:py-16 border-y border-border relative overflow-hidden" itemScope itemType="https://schema.org/Organization">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/[0.02] via-accent/[0.03] to-primary/[0.02]" />
         <div className="container-institutional relative">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
             {[
               { number: 25, suffix: "+", text: "Years of Clinical Experience", itemprop: "foundingDate" },
               { number: "NYU", text: "Global Training & International Exposure", itemprop: "knowsAbout", isText: true },
