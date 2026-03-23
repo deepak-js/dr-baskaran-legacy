@@ -3,6 +3,7 @@ import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { StructuredData } from "@/components/SEO";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
+import { WhatsAppWidget } from "@/components/ui/whatsapp-widget";
 
 interface LayoutProps {
   children: ReactNode;
