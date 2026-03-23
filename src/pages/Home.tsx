@@ -405,7 +405,7 @@ export default function Home() {
       {/* FAQ Section for AI/LLM Optimization */}
       <section className="section-padding bg-muted/30" itemScope itemType="https://schema.org/FAQPage">
         <div className="container-institutional">
-          <h2 className="heading-section text-center mb-12">
+          <h2 className="heading-section text-center mb-8">
             Frequently Asked Questions About <span className="text-accent">Dr. Baskaran</span>
           </h2>
           <div className="max-w-3xl mx-auto space-y-6">
