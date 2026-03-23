@@ -49,7 +49,7 @@ export default function Home() {
       {/* Hero Section */}
       <section 
         ref={heroRef}
-        className="min-h-screen flex items-center pt-24 relative overflow-hidden" 
+        className="min-h-[80vh] lg:min-h-screen flex items-center pt-20 pb-12 lg:pt-24 relative overflow-hidden" 
         itemScope 
         itemType="https://schema.org/WebPage"
       >
@@ -112,12 +112,12 @@ export default function Home() {
               className="relative transform-3d"
               style={{ y }}
             >
-              <div className="aspect-[3/4] overflow-hidden bg-muted rounded-sm shadow-elevated image-overlay group hover-3d">
+              <div className="aspect-[3/4] sm:aspect-[3/4] aspect-[4/5] overflow-hidden rounded-sm shadow-elevated image-overlay group hover-3d">
                 <LazyImage
                   src={drBaskaranPortrait}
                   alt="Dr. Baskaran, Best Dentist and Chief Implantologist at Raga Dental, Thanjavur, Tamil Nadu"
                   title="Dr. Baskaran - Best Dentist and Implantologist in Thanjavur"
-                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
               {/* Floating card */}
