@@ -17,6 +17,7 @@ export function Layout({ children }: LayoutProps) {
       <main className="flex-1" itemScope itemType="https://schema.org/WebPage">{children}</main>
       <Footer />
       <ScrollToTop />
+      <WhatsAppWidget />
     </div>
   );
 }
