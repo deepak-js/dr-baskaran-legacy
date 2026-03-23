@@ -49,7 +49,7 @@ export default function Home() {
       {/* Hero Section */}
       <section 
         ref={heroRef}
-        className="min-h-screen flex items-center pt-24 relative overflow-hidden" 
+        className="min-h-[80vh] lg:min-h-screen flex items-center pt-20 pb-12 lg:pt-24 relative overflow-hidden" 
         itemScope 
         itemType="https://schema.org/WebPage"
       >
