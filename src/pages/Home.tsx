@@ -312,7 +312,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto text-center text-primary-foreground"
           >
-            <div className="w-12 h-0.5 bg-accent mx-auto mb-8" />
+            <div className="w-12 h-0.5 bg-accent mx-auto mb-6" />
             <p className="label-caps mb-4 text-accent">Philosophy</p>
             <blockquote className="heading-section mb-6 italic">
               "Pain-Free Dentistry is not a promise."
