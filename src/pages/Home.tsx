@@ -408,7 +408,7 @@ export default function Home() {
           <h2 className="heading-section text-center mb-8">
             Frequently Asked Questions About <span className="text-accent">Dr. Baskaran</span>
           </h2>
-          <div className="max-w-3xl mx-auto space-y-6">
+          <div className="max-w-3xl mx-auto space-y-4">
             {[
               {
                 question: "Who is the best dentist in Thanjavur?",
