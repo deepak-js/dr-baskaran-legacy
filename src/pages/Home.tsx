@@ -390,7 +390,7 @@ export default function Home() {
             <h2 className="heading-section mb-6">
               Begin Your Journey to <span className="text-accent italic">Precision Care</span>
             </h2>
-            <p className="body-editorial mb-8">
+            <p className="body-editorial mb-6">
               Schedule a consultation with Dr. Baskaran, the best dentist and implantologist in Thanjavur, to discuss your dental health goals.
             </p>
             <Link to="/contact">
