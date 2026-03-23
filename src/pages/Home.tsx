@@ -140,7 +140,7 @@ export default function Home() {
       </section>
 
       {/* Authority Strip with Animated Counters */}
-      <section className="py-16 border-y border-border relative overflow-hidden" itemScope itemType="https://schema.org/Organization">
+      <section className="py-10 lg:py-16 border-y border-border relative overflow-hidden" itemScope itemType="https://schema.org/Organization">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/[0.02] via-accent/[0.03] to-primary/[0.02]" />
         <div className="container-institutional relative">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
