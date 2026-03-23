@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes, ReactNode } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-interface PremiumButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface PremiumButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onAnimationStart' | 'onDragStart' | 'onDragEnd' | 'onDrag'> {
   children: ReactNode;
   variant?: "primary" | "secondary" | "outline";
   size?: "sm" | "md" | "lg" | "xl";

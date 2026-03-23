@@ -26,7 +26,7 @@ export function SocialShare({ url, title, description }: SocialShareProps) {
     }
 
     // Use Web Share API if available (mobile)
-    if (navigator.share && platform !== "email") {
+    if (navigator.share) {
       try {
         await navigator.share({
           title,
