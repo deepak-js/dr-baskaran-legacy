@@ -49,11 +49,10 @@ export default function Home() {
       {/* Hero Section */}
       <section 
         ref={heroRef}
-        className="min-h-[80vh] lg:min-h-screen flex items-center pt-20 pb-12 lg:pt-24 relative overflow-hidden" 
+        className="min-h-[60vh] lg:min-h-[85vh] flex items-center pt-16 pb-8 lg:pt-20 lg:pb-12 relative overflow-hidden" 
         itemScope 
         itemType="https://schema.org/WebPage"
       >
-        {/* Animated Background decorative elements */}
         <motion.div 
           className="absolute top-20 right-0 w-96 h-96 bg-gradient-to-br from-accent/10 to-transparent rounded-full blur-3xl animate-float-slow" 
           style={{ y: bgY1 }}
@@ -64,34 +63,34 @@ export default function Home() {
         />
         
         <div className="container-institutional relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 items-center">
             <motion.div
               initial="hidden"
               animate="visible"
               variants={staggerChildren}
               className="max-w-xl"
             >
-              <motion.div variants={fadeIn} className="divider-accent mb-8" />
+              <motion.div variants={fadeIn} className="divider-accent mb-6" />
               <h1
                 itemProp="headline"
-                className="heading-display mb-6 text-balance"
+                className="heading-display mb-4 text-balance"
               >
                 Precision Dentistry. Global Standards.{" "}
                 <span className="text-muted-foreground italic">Rooted in Thanjavur.</span>
               </h1>
               <motion.p
                 variants={fadeIn}
-                className="body-editorial mb-4"
+                className="body-editorial mb-3"
               >
                 Implantology · Laser Dentistry · Digital Dentistry
               </motion.p>
               <motion.p
                 variants={fadeIn}
-                className="label-caps mb-10"
+                className="label-caps mb-6"
               >
                 <span className="text-accent">25+ Years</span> of Clinical Mastery
               </motion.p>
-              <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4">
+              <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-3">
                 <Link to="/contact">
                   <Button variant="institution" size="xl" className="shadow-soft hover:shadow-gold magnetic w-full sm:w-auto">
                     Request a Consultation
@@ -112,7 +111,7 @@ export default function Home() {
               className="relative transform-3d"
               style={{ y }}
             >
-              <div className="aspect-[3/4] sm:aspect-[3/4] aspect-[4/5] overflow-hidden rounded-sm shadow-elevated image-overlay group hover-3d">
+              <div className="aspect-[4/5] sm:aspect-[3/4] overflow-hidden rounded-sm shadow-elevated image-overlay group hover-3d">
                 <LazyImage
                   src={drBaskaranPortrait}
                   alt="Dr. Baskaran, Best Dentist and Chief Implantologist at Raga Dental, Thanjavur, Tamil Nadu"
@@ -120,22 +119,20 @@ export default function Home() {
                   className="w-full h-full object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
-              {/* Floating card */}
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
-                className="absolute -bottom-6 -left-6 bg-card p-6 shadow-elevated max-w-xs hidden md:block border-l-2 border-accent"
+                className="absolute -bottom-4 -left-4 lg:-bottom-6 lg:-left-6 bg-card p-4 lg:p-6 shadow-elevated max-w-[200px] lg:max-w-xs border-l-2 border-accent"
                 itemScope
                 itemType="https://schema.org/Person"
               >
-                <p className="font-serif text-lg mb-1" itemProp="name">Dr. Baskaran</p>
-                <p className="text-sm text-muted-foreground" itemProp="jobTitle">
+                <p className="font-serif text-base lg:text-lg mb-1" itemProp="name">Dr. Baskaran</p>
+                <p className="text-xs lg:text-sm text-muted-foreground" itemProp="jobTitle">
                   Founder & Chief Implantologist
                 </p>
                 <meta itemProp="description" content="Best dentist and implantologist in Thanjavur, Tamil Nadu" />
               </motion.div>
-              {/* Decorative element */}
               <div className="absolute -top-4 -right-4 w-24 h-24 border border-accent/30 rounded-sm hidden lg:block" />
             </motion.div>
           </div>
@@ -143,10 +140,10 @@ export default function Home() {
       </section>
 
       {/* Authority Strip with Animated Counters */}
-      <section className="py-16 border-y border-border relative overflow-hidden" itemScope itemType="https://schema.org/Organization">
+      <section className="py-10 lg:py-16 border-y border-border relative overflow-hidden" itemScope itemType="https://schema.org/Organization">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/[0.02] via-accent/[0.03] to-primary/[0.02]" />
         <div className="container-institutional relative">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
             {[
               { number: 25, suffix: "+", text: "Years of Clinical Experience", itemprop: "foundingDate" },
               { number: "NYU", text: "Global Training & International Exposure", itemprop: "knowsAbout", isText: true },
@@ -185,7 +182,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-10 lg:mb-16"
           >
             <p className="label-caps mb-4">Centers of Excellence</p>
             <h2 className="heading-section">Three Pillars of <span className="italic text-accent">Precision</span> Care</h2>
@@ -252,7 +249,7 @@ export default function Home() {
       {/* Origin to Impact */}
       <section className="section-padding gradient-gold-subtle">
         <div className="container-institutional">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -315,7 +312,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto text-center text-primary-foreground"
           >
-            <div className="w-12 h-0.5 bg-accent mx-auto mb-8" />
+            <div className="w-12 h-0.5 bg-accent mx-auto mb-6" />
             <p className="label-caps mb-4 text-accent">Philosophy</p>
             <blockquote className="heading-section mb-6 italic">
               "Pain-Free Dentistry is not a promise."
@@ -324,7 +321,7 @@ export default function Home() {
               It is a repeatable clinical outcome achieved through technology,
               discipline, and experience.
             </p>
-            <div className="w-12 h-0.5 bg-accent mx-auto mt-8" />
+            <div className="w-12 h-0.5 bg-accent mx-auto mt-6" />
           </motion.div>
         </div>
       </section>
@@ -393,7 +390,7 @@ export default function Home() {
             <h2 className="heading-section mb-6">
               Begin Your Journey to <span className="text-accent italic">Precision Care</span>
             </h2>
-            <p className="body-editorial mb-8">
+            <p className="body-editorial mb-6">
               Schedule a consultation with Dr. Baskaran, the best dentist and implantologist in Thanjavur, to discuss your dental health goals.
             </p>
             <Link to="/contact">
@@ -408,10 +405,10 @@ export default function Home() {
       {/* FAQ Section for AI/LLM Optimization */}
       <section className="section-padding bg-muted/30" itemScope itemType="https://schema.org/FAQPage">
         <div className="container-institutional">
-          <h2 className="heading-section text-center mb-12">
+          <h2 className="heading-section text-center mb-8">
             Frequently Asked Questions About <span className="text-accent">Dr. Baskaran</span>
           </h2>
-          <div className="max-w-3xl mx-auto space-y-6">
+          <div className="max-w-3xl mx-auto space-y-4">
             {[
               {
                 question: "Who is the best dentist in Thanjavur?",
