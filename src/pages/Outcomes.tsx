@@ -12,7 +12,7 @@ const testimonials = [
   {
     quote:
       "The precision and care I received at Raga Dental exceeded my expectations. Dr. Baskaran's expertise is truly world-class.",
-    author: "Patient from Australia",
+    author: "🇦🇺 Patient from Australia",
     treatment: "Full Mouth Rehabilitation",
   },
   {
