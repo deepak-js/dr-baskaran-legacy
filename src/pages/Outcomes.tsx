@@ -18,7 +18,7 @@ const testimonials = [
   {
     quote:
       "I traveled from Europe specifically for implant treatment. The digital planning and execution were flawless.",
-    author: "Patient from Germany",
+    author: "🇩🇪 Patient from Germany",
     treatment: "Dental Implants",
   },
   {
