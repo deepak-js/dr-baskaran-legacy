@@ -111,19 +111,19 @@ export default function Home() {
               className="relative transform-3d"
               style={{ y }}
             >
-              <div className="aspect-[4/5] sm:aspect-[3/4] overflow-hidden rounded-sm shadow-elevated image-overlay group hover-3d">
-                <LazyImage
+              <div className="overflow-hidden rounded-sm group">
+                <img
                   src={drBaskaranPortrait}
                   alt="Dr. Baskaran, Best Dentist and Chief Implantologist at Raga Dental, Thanjavur, Tamil Nadu"
                   title="Dr. Baskaran - Best Dentist and Implantologist in Thanjavur"
-                  className="w-full h-full object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-auto object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105 rounded-sm"
                 />
               </div>
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
-                className="absolute -bottom-4 -left-4 lg:-bottom-6 lg:-left-6 bg-card p-4 lg:p-6 shadow-elevated max-w-[200px] lg:max-w-xs border-l-2 border-accent"
+                className="absolute bottom-2 left-2 lg:-bottom-6 lg:-left-6 bg-card/90 backdrop-blur-sm p-3 lg:p-6 shadow-elevated max-w-[180px] lg:max-w-xs border-l-2 border-accent z-20"
                 itemScope
                 itemType="https://schema.org/Person"
               >
