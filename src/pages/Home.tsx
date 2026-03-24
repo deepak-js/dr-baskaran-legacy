@@ -348,7 +348,7 @@ export default function Home() {
               <div className="flex flex-wrap gap-3 mb-8">
                 {["Europe", "Australia", "New Zealand", "India"].map((country) => (
                   <span key={country} className="px-4 py-2 bg-muted rounded-full text-sm">
-                    {country}
+                    {getFlag(country)} {country}
                   </span>
                 ))}
               </div>
