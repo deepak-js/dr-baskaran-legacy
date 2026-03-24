@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
+import { getFlag } from "@/lib/flags";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
