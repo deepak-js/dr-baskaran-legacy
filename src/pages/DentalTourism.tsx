@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { getFlag } from "@/lib/flags";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
@@ -90,7 +91,7 @@ export default function DentalTourism() {
               <div className="flex flex-wrap gap-3">
                 {["Europe", "Australia", "New Zealand", "Middle East"].map((region) => (
                   <span key={region} className="px-4 py-2 bg-accent/10 rounded-full text-sm font-medium text-accent">
-                    {region}
+                    {getFlag(region)} {region}
                   </span>
                 ))}
               </div>

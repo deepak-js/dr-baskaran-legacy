@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { getFlag } from "@/lib/flags";
 
 interface Testimonial {
   id: number;
@@ -144,7 +145,7 @@ export function TestimonialsCarousel() {
                           {testimonials[currentIndex].name}
                         </p>
                         <p className="text-sm text-muted-foreground">
-                          {testimonials[currentIndex].location}
+                          {getFlag(testimonials[currentIndex].location)} {testimonials[currentIndex].location}
                         </p>
                         {testimonials[currentIndex].treatment && (
                           <p className="text-xs text-accent mt-2">

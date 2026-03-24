@@ -1,4 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
+import { getFlag } from "@/lib/flags";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
@@ -348,7 +349,7 @@ export default function Home() {
               <div className="flex flex-wrap gap-3 mb-8">
                 {["Europe", "Australia", "New Zealand", "India"].map((country) => (
                   <span key={country} className="px-4 py-2 bg-muted rounded-full text-sm">
-                    {country}
+                    {getFlag(country)} {country}
                   </span>
                 ))}
               </div>

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
+import { getFlag } from "@/lib/flags";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -11,19 +12,19 @@ const testimonials = [
   {
     quote:
       "The precision and care I received at Raga Dental exceeded my expectations. Dr. Baskaran's expertise is truly world-class.",
-    author: "Patient from Australia",
+    author: "🇦🇺 Patient from Australia",
     treatment: "Full Mouth Rehabilitation",
   },
   {
     quote:
       "I traveled from Europe specifically for implant treatment. The digital planning and execution were flawless.",
-    author: "Patient from Germany",
+    author: "🇩🇪 Patient from Germany",
     treatment: "Dental Implants",
   },
   {
     quote:
       "The laser dentistry approach made my procedure completely pain-free. I wish I had found this clinic years ago.",
-    author: "Patient from Chennai",
+    author: "🇮🇳 Patient from Chennai",
     treatment: "Periodontal Treatment",
   },
 ];
