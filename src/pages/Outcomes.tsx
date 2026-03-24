@@ -24,7 +24,7 @@ const testimonials = [
   {
     quote:
       "The laser dentistry approach made my procedure completely pain-free. I wish I had found this clinic years ago.",
-    author: "Patient from Chennai",
+    author: "🇮🇳 Patient from Chennai",
     treatment: "Periodontal Treatment",
   },
 ];
