@@ -49,7 +49,7 @@ export default function Institution() {
             <img
               src={teamImage}
               alt="The Raga Dental team"
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-cover object-top"
             />
           </motion.div>
         </div>
