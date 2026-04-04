@@ -44,12 +44,12 @@ export default function Institution() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="aspect-[16/9] lg:aspect-[21/9] overflow-hidden bg-muted"
+            className="aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9] overflow-hidden bg-muted"
           >
             <img
               src={teamImage}
               alt="The Raga Dental team"
-              className="w-full h-full object-cover object-top"
+              className="w-full h-full object-cover object-[center_20%]"
             />
           </motion.div>
         </div>
