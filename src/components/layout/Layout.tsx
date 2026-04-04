@@ -4,6 +4,7 @@ import { Footer } from "./Footer";
 import { StructuredData } from "@/components/SEO";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { WhatsAppWidget } from "@/components/ui/whatsapp-widget";
+import { MobileCTABar } from "@/components/ui/mobile-cta-bar";
 
 interface LayoutProps {
   children: ReactNode;
