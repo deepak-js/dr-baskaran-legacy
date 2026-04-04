@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -21,17 +22,32 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    toast({
-      title: "Consultation Request Received",
-      description:
-        "We will contact you within 24-48 hours to schedule your consultation.",
+    const formData = new FormData(e.currentTarget);
+    const { error } = await supabase.from("consultation_requests").insert({
+      first_name: formData.get("firstName") as string,
+      last_name: formData.get("lastName") as string,
+      email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
+      country: formData.get("country") as string,
+      inquiry: formData.get("inquiry") as string,
     });
 
+    if (error) {
+      toast({
+        title: "Submission Failed",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    } else {
+      toast({
+        title: "Consultation Request Received",
+        description:
+          "We will contact you within 24-48 hours to schedule your consultation.",
+      });
+      (e.target as HTMLFormElement).reset();
+    }
+
     setIsSubmitting(false);
-    (e.target as HTMLFormElement).reset();
   };
 
   return (

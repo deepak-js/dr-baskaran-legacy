@@ -4,6 +4,7 @@ import { Footer } from "./Footer";
 import { StructuredData } from "@/components/SEO";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { WhatsAppWidget } from "@/components/ui/whatsapp-widget";
+import { MobileCTABar } from "@/components/ui/mobile-cta-bar";
 
 interface LayoutProps {
   children: ReactNode;
@@ -18,6 +19,9 @@ export function Layout({ children }: LayoutProps) {
       <Footer />
       <ScrollToTop />
       <WhatsAppWidget />
+      <MobileCTABar />
+      {/* Spacer for mobile CTA bar */}
+      <div className="h-16 lg:hidden" />
     </div>
   );
 }
