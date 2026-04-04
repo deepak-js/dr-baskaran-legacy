@@ -19,6 +19,9 @@ export function Layout({ children }: LayoutProps) {
       <Footer />
       <ScrollToTop />
       <WhatsAppWidget />
+      <MobileCTABar />
+      {/* Spacer for mobile CTA bar */}
+      <div className="h-16 lg:hidden" />
     </div>
   );
 }
