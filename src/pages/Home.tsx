@@ -112,14 +112,6 @@ export default function Home() {
               className="relative transform-3d"
               style={{ y }}
             >
-              <div className="aspect-[4/5] sm:aspect-[3/4] overflow-hidden rounded-sm shadow-elevated image-overlay group hover-3d">
-                <LazyImage
-                  src={drBaskaranPortrait}
-                  alt="Dr. Baskaran, Best Dentist and Chief Implantologist at Raga Dental, Thanjavur, Tamil Nadu"
-                  title="Dr. Baskaran - Best Dentist and Implantologist in Thanjavur"
-                  className="w-full h-full object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-110"
-                />
-              </div>
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
