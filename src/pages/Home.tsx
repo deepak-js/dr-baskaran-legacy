@@ -109,15 +109,15 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative"
+              className="relative transform-3d"
               style={{ y }}
             >
-              <div className="aspect-[4/5] sm:aspect-[3/4] overflow-hidden rounded-sm shadow-elevated">
+              <div className="aspect-[4/5] sm:aspect-[3/4] overflow-hidden rounded-sm shadow-elevated image-overlay group hover-3d">
                 <LazyImage
                   src={drBaskaranPortrait}
                   alt="Dr. Baskaran, Best Dentist and Chief Implantologist at Raga Dental, Thanjavur, Tamil Nadu"
                   title="Dr. Baskaran - Best Dentist and Implantologist in Thanjavur"
-                  className="w-full h-full object-cover object-[center_15%]"
+                  className="w-full h-full object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
               <motion.div 
@@ -145,6 +145,7 @@ export default function Home() {
                 </div>
                 <meta itemProp="description" content="Best dentist and implantologist in Thanjavur, Tamil Nadu" />
               </motion.div>
+              <div className="absolute -top-4 -right-4 w-24 h-24 border border-accent/30 rounded-sm hidden lg:block" />
             </motion.div>
           </div>
         </div>
