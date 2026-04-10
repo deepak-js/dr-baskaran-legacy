@@ -113,19 +113,22 @@ export default function Home() {
               className="relative transform-3d"
               style={{ y }}
             >
-              <div className="aspect-[4/5] sm:aspect-[3/4] overflow-hidden rounded-sm shadow-elevated image-overlay group hover-3d">
-                <LazyImage
-                  src={drBaskaranHero}
-                  alt="Dr. Baskaran, Best Dentist and Chief Implantologist at Raga Dental, Thanjavur, Tamil Nadu"
-                  title="Dr. Baskaran - Best Dentist and Implantologist in Thanjavur"
-                  className="w-full h-full object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-110"
-                />
+              <div className="relative">
+                <div className="aspect-[4/5] sm:aspect-[3/4] overflow-hidden rounded-sm shadow-elevated image-overlay group hover-3d">
+                  <LazyImage
+                    src={drBaskaranHero}
+                    alt="Dr. Baskaran, Best Dentist and Chief Implantologist at Raga Dental, Thanjavur, Tamil Nadu"
+                    title="Dr. Baskaran - Best Dentist and Implantologist in Thanjavur"
+                    className="w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-110"
+                  />
+                </div>
+                <div className="absolute -top-4 -right-4 w-24 h-24 border border-accent/30 rounded-sm hidden lg:block" />
               </div>
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
-                className="absolute -bottom-4 -left-4 lg:-bottom-6 lg:-left-6 bg-card p-4 lg:p-6 shadow-elevated max-w-[240px] lg:max-w-sm border-l-2 border-accent"
+                className="mt-4 bg-card p-4 lg:p-6 shadow-elevated border-l-2 border-accent"
                 itemScope
                 itemType="https://schema.org/Person"
               >
@@ -146,7 +149,6 @@ export default function Home() {
                 </div>
                 <meta itemProp="description" content="Best dentist and implantologist in Thanjavur, Tamil Nadu" />
               </motion.div>
-              <div className="absolute -top-4 -right-4 w-24 h-24 border border-accent/30 rounded-sm hidden lg:block" />
             </motion.div>
           </div>
         </div>
