@@ -405,11 +405,18 @@ export default function Home() {
             <p className="body-editorial mb-6">
               Schedule a consultation with Dr. Baskaran, the best dentist and implantologist in Thanjavur, to discuss your dental health goals.
             </p>
-            <Link to="/contact">
-              <Button variant="institution" size="xl" className="shadow-soft hover:shadow-gold magnetic">
-                Request a Consultation
-              </Button>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link to="/contact">
+                <Button variant="institution" size="xl" className="btn-glow bg-accent text-accent-foreground hover:bg-accent/90 magnetic font-semibold">
+                  ✦ Book Your Consultation
+                </Button>
+              </Link>
+              <a href="tel:+919500979886">
+                <Button variant="institutionOutline" size="xl" className="magnetic border-accent text-accent hover:bg-accent hover:text-accent-foreground">
+                  📞 Call +91 95009 79886
+                </Button>
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
