@@ -93,15 +93,15 @@ export default function Home() {
               </motion.p>
               <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-3">
                 <Link to="/contact">
-                  <Button variant="institution" size="xl" className="shadow-soft hover:shadow-gold magnetic w-full sm:w-auto">
-                    Request a Consultation
+                  <Button variant="institution" size="xl" className="btn-glow bg-accent text-accent-foreground hover:bg-accent/90 magnetic w-full sm:w-auto font-semibold">
+                    ✦ Request a Consultation
                   </Button>
                 </Link>
-                <Link to="/doctor">
-                  <Button variant="institutionOutline" size="xl" className="magnetic w-full sm:w-auto">
-                    Meet Dr. Baskaran
+                <a href="tel:+919500979886">
+                  <Button variant="institutionOutline" size="xl" className="magnetic w-full sm:w-auto border-accent text-accent hover:bg-accent hover:text-accent-foreground">
+                    📞 Call Now
                   </Button>
-                </Link>
+                </a>
               </motion.div>
             </motion.div>
 
@@ -124,14 +124,25 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
-                className="absolute -bottom-4 -left-4 lg:-bottom-6 lg:-left-6 bg-card p-4 lg:p-6 shadow-elevated max-w-[200px] lg:max-w-xs border-l-2 border-accent"
+                className="absolute -bottom-4 -left-4 lg:-bottom-6 lg:-left-6 bg-card p-4 lg:p-6 shadow-elevated max-w-[240px] lg:max-w-sm border-l-2 border-accent"
                 itemScope
                 itemType="https://schema.org/Person"
               >
                 <p className="font-serif text-base lg:text-lg mb-1" itemProp="name">Dr. Baskaran</p>
-                <p className="text-xs lg:text-sm text-muted-foreground" itemProp="jobTitle">
+                <p className="text-xs lg:text-sm text-muted-foreground mb-2" itemProp="jobTitle">
                   Founder & Chief Implantologist
                 </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {[
+                    { flag: "🇺🇸", label: "NYU, USA" },
+                    { flag: "🇮🇹", label: "Unicamillus, Italy" },
+                    { flag: "🇮🇳", label: "25+ Yrs India" },
+                  ].map((edu) => (
+                    <span key={edu.label} className="inline-flex items-center gap-1 text-[10px] lg:text-xs bg-muted/80 px-2 py-0.5 rounded-full text-muted-foreground">
+                      {edu.flag} {edu.label}
+                    </span>
+                  ))}
+                </div>
                 <meta itemProp="description" content="Best dentist and implantologist in Thanjavur, Tamil Nadu" />
               </motion.div>
               <div className="absolute -top-4 -right-4 w-24 h-24 border border-accent/30 rounded-sm hidden lg:block" />
@@ -394,11 +405,18 @@ export default function Home() {
             <p className="body-editorial mb-6">
               Schedule a consultation with Dr. Baskaran, the best dentist and implantologist in Thanjavur, to discuss your dental health goals.
             </p>
-            <Link to="/contact">
-              <Button variant="institution" size="xl" className="shadow-soft hover:shadow-gold magnetic">
-                Request a Consultation
-              </Button>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link to="/contact">
+                <Button variant="institution" size="xl" className="btn-glow bg-accent text-accent-foreground hover:bg-accent/90 magnetic font-semibold">
+                  ✦ Book Your Consultation
+                </Button>
+              </Link>
+              <a href="tel:+919500979886">
+                <Button variant="institutionOutline" size="xl" className="magnetic border-accent text-accent hover:bg-accent hover:text-accent-foreground">
+                  📞 Call +91 95009 79886
+                </Button>
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
