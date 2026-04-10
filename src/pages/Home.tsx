@@ -9,6 +9,7 @@ import { TestimonialsCarousel } from "@/components/ui/testimonials-carousel";
 import { LazyImage } from "@/components/ui/lazy-image";
 import { useRef } from "react";
 import drBaskaranPortrait from "@/assets/dr-baskaran-portrait.jpg";
+import drBaskaranHero from "@/assets/dr-baskaran-hero.jpeg";
 import clinicProcedure from "@/assets/clinic-procedure.jpg";
 import implantHero from "@/assets/implant-hero.jpg";
 import laserHero from "@/assets/laser-dentistry-hero.jpg";
@@ -112,6 +113,14 @@ export default function Home() {
               className="relative transform-3d"
               style={{ y }}
             >
+              <div className="aspect-[4/5] sm:aspect-[3/4] overflow-hidden rounded-sm shadow-elevated image-overlay group hover-3d">
+                <LazyImage
+                  src={drBaskaranHero}
+                  alt="Dr. Baskaran, Best Dentist and Chief Implantologist at Raga Dental, Thanjavur, Tamil Nadu"
+                  title="Dr. Baskaran - Best Dentist and Implantologist in Thanjavur"
+                  className="w-full h-full object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-110"
+                />
+              </div>
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
