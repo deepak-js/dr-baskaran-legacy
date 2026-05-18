@@ -12,14 +12,14 @@ interface SEOProps {
 }
 
 // Base URL - Update this to your actual domain
-const BASE_URL = "https://www.ragadental.com";
+const BASE_URL = "https://dr-baskaran-legacy.lovable.app";
 
 // Default SEO data
 const defaultSEO = {
-  title: "Dr. Baskaran - Best Dentist & Implantologist in Thanjavur | Raga Dental",
-  description: "Dr. Baskaran is the best dentist and implantologist in Thanjavur, Tamil Nadu. 25+ years of expertise in dental implants, laser dentistry, and digital dentistry at Raga Dental. World-class precision dentistry with global standards.",
+  title: "Dr. Baskaran — Best Dentist in Thanjavur | Raga Dental",
+  description: "Dr. Baskaran — 25+ years in implants, laser & digital dentistry at Raga Dental, Thanjavur. World-class precision care.",
   keywords: "Dr. Baskaran, best dentist Thanjavur, implantologist Thanjavur, Raga Dental, dental implants Thanjavur, laser dentistry Thanjavur, digital dentistry Thanjavur, best dentist Tamil Nadu, dental tourism India",
-  image: `${BASE_URL}/dr-baskaran-portrait.jpg`,
+  image: "",
   type: "website",
 };
 
