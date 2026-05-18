@@ -118,10 +118,10 @@ export function StructuredData() {
     "name": "Raga Dental",
     "alternateName": "Raga Dental Clinic",
     "description": "Raga Dental is a world-class dental clinic in Thanjavur, Tamil Nadu, specializing in dental implants, laser dentistry, and digital dentistry. Led by Dr. Baskaran, a renowned implantologist with 25+ years of experience.",
-    "url": "https://www.ragadental.com",
-    "logo": "https://www.ragadental.com/logo.png",
-    "image": "https://www.ragadental.com/dr-baskaran-portrait.jpg",
-    "telephone": "+91-XXXXX-XXXXX",
+    "url": "https://dr-baskaran-legacy.lovable.app",
+    "logo": "https://dr-baskaran-legacy.lovable.app/logo.png",
+    "image": "https://dr-baskaran-legacy.lovable.app/dr-baskaran-portrait.jpg",
+    "telephone": "+91-95009-79886",
     "email": "info@ragadental.com",
     "address": {
       "@type": "PostalAddress",
@@ -221,7 +221,7 @@ export function StructuredData() {
   const medicalBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
-    "@id": "https://www.ragadental.com/#medicalbusiness",
+    "@id": "https://dr-baskaran-legacy.lovable.app/#medicalbusiness",
     "name": "Raga Dental",
     "medicalSpecialty": [
       {
@@ -258,13 +258,13 @@ export function StructuredData() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://www.ragadental.com"
+        "item": "https://dr-baskaran-legacy.lovable.app"
       },
       ...(location.pathname !== "/" ? [{
         "@type": "ListItem",
         "position": 2,
         "name": location.pathname.split("/").pop()?.replace("-", " ") || "Page",
-        "item": `https://www.ragadental.com${location.pathname}`
+        "item": `https://dr-baskaran-legacy.lovable.app${location.pathname}`
       }] : [])
     ]
   };
@@ -336,13 +336,13 @@ export function StructuredData() {
       "@type": "Blog",
       "name": "Dr. Baskaran - Raga Dental Blog",
       "description": "Expert dental insights, articles, and educational content from Dr. Baskaran at Raga Dental, Thanjavur.",
-      "url": "https://www.ragadental.com/blog",
+      "url": "https://dr-baskaran-legacy.lovable.app/blog",
       "publisher": {
         "@type": "Organization",
         "name": "Raga Dental",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://www.ragadental.com/logo.png"
+          "url": "https://dr-baskaran-legacy.lovable.app/logo.png"
         }
       },
       "author": {
