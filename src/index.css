@@ -501,6 +501,41 @@
     100% { left: 100%; }
   }
 
+  /* Multi-color glowing CTA */
+  @keyframes cta-rainbow-glow {
+    0%   { box-shadow: 0 0 12px hsl(var(--accent) / 0.6), 0 0 24px #f59e0b80, 0 0 36px #ec489966; }
+    25%  { box-shadow: 0 0 14px #ec4899aa, 0 0 28px #8b5cf680, 0 0 42px #3b82f666; }
+    50%  { box-shadow: 0 0 16px #3b82f6aa, 0 0 32px #10b98180, 0 0 48px #f59e0b66; }
+    75%  { box-shadow: 0 0 14px #10b981aa, 0 0 28px #f59e0b80, 0 0 42px #ec489966; }
+    100% { box-shadow: 0 0 12px hsl(var(--accent) / 0.6), 0 0 24px #f59e0b80, 0 0 36px #ec489966; }
+  }
+
+  @keyframes cta-rainbow-border {
+    0%   { border-color: hsl(var(--accent)); }
+    25%  { border-color: #ec4899; }
+    50%  { border-color: #3b82f6; }
+    75%  { border-color: #10b981; }
+    100% { border-color: hsl(var(--accent)); }
+  }
+
+  .btn-rainbow-glow {
+    position: relative;
+    overflow: hidden;
+    animation: cta-rainbow-glow 3s ease-in-out infinite, cta-rainbow-border 6s linear infinite;
+  }
+
+  .btn-rainbow-glow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent);
+    animation: btn-shine 2.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+
   /* Smooth Scroll */
   html {
     scroll-behavior: smooth;
