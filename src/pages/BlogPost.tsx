@@ -62,7 +62,7 @@ export default function BlogPost() {
 
   const currentUrl = typeof window !== "undefined" 
     ? window.location.href 
-    : `https://www.ragadental.com/blog/${post.slug}`;
+    : `https://dr-baskaran-legacy.lovable.app/blog/${post.slug}`;
 
   // Get related posts (same category, excluding current)
   const relatedPosts = blogPosts
