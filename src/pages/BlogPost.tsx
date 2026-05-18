@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
@@ -42,12 +43,12 @@ export default function BlogPost() {
   return (
     <Layout>
       <SEO
-        title={`${post.title} | Dr. Baskaran - Raga Dental`}
-        description={post.excerpt}
+        title={post.title.length > 55 ? post.title.slice(0, 55) : `${post.title} | Raga Dental`}
+        description={post.excerpt.length > 158 ? post.excerpt.slice(0, 155) + '...' : post.excerpt}
         keywords={post.tags.join(", ")}
-        image={post.image || `https://www.ragadental.com/dr-baskaran-portrait.jpg`}
         type="article"
       />
+      <ArticleJsonLd post={post} url={currentUrl} />
 
       {/* Back Link */}
       <section className="pt-32 pb-8">
