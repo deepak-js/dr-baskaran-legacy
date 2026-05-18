@@ -114,12 +114,12 @@ export default function Home() {
               style={{ y }}
             >
               <div className="relative">
-                <div className="aspect-[4/5] sm:aspect-[3/4] overflow-hidden rounded-sm shadow-elevated image-overlay group hover-3d">
+                <div className="overflow-hidden rounded-sm shadow-elevated image-overlay group bg-muted">
                   <LazyImage
                     src={drBaskaranHero}
                     alt="Dr. Baskaran, Best Dentist and Chief Implantologist at Raga Dental, Thanjavur, Tamil Nadu"
                     title="Dr. Baskaran - Best Dentist and Implantologist in Thanjavur"
-                    className="w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-auto object-contain"
                   />
                 </div>
                 <div className="absolute -top-4 -right-4 w-24 h-24 border border-accent/30 rounded-sm hidden lg:block" />
