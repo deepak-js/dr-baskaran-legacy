@@ -33,8 +33,8 @@ export default function Outcomes() {
   return (
     <Layout>
       <SEO
-        title="Dental Treatment Outcomes & Results | Dr. Baskaran - Raga Dental"
-        description="View successful dental treatment outcomes and patient results from Dr. Baskaran at Raga Dental, Thanjavur. Real results from dental implants, laser dentistry, and digital dentistry procedures."
+        title="Treatment Outcomes — Raga Dental, Thanjavur"
+        description="Real treatment outcomes from Dr. Baskaran — dental implants, laser & digital dentistry results at Raga Dental, Thanjavur."
         keywords="dental treatment outcomes Thanjavur, dental implant results, laser dentistry results, dental success stories Thanjavur, patient outcomes Raga Dental, dental treatment before after"
       />
       {/* Hero */}

@@ -14,8 +14,8 @@ export default function LaserDentistry() {
   return (
     <Layout>
       <SEO
-        title="Laser Dentistry in Thanjavur | Pain-Free Dental Treatment by Dr. Baskaran"
-        description="Laser dentistry in Thanjavur by Dr. Baskaran at Raga Dental. Pain-free, bloodless procedures with faster healing. Pioneer of laser dentistry in South Tamil Nadu. Best laser dentist in Thanjavur."
+        title="Laser Dentistry in Thanjavur — Dr. Baskaran"
+        description="Pain-free, bloodless laser dental procedures with faster healing by Dr. Baskaran — pioneer of laser dentistry in South Tamil Nadu."
         keywords="laser dentistry Thanjavur, pain-free dentistry Thanjavur, Dr. Baskaran laser dentistry, best laser dentist Thanjavur, bloodless dental procedures Thanjavur"
       />
       {/* Hero with Image */}
