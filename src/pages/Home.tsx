@@ -120,6 +120,9 @@ export default function Home() {
                     alt="Dr. Baskaran, Best Dentist and Chief Implantologist at Raga Dental, Thanjavur, Tamil Nadu"
                     title="Dr. Baskaran - Best Dentist and Implantologist in Thanjavur"
                     className="w-full h-auto object-contain"
+                    eager
+                    width={1200}
+                    height={1500}
                   />
                 </div>
                 <div className="absolute -top-4 -right-4 w-24 h-24 border border-accent/30 rounded-sm hidden lg:block" />
