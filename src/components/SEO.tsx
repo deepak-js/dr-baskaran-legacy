@@ -68,7 +68,7 @@ export function SEO({ title, description, keywords, image, type, noindex, canoni
     // Open Graph tags - use actual current URL for sharing
     updateMetaTag("og:title", optimizedTitle, "property");
     updateMetaTag("og:description", seoDescription, "property");
-    updateMetaTag("og:image", seoImage, "property");
+    if (seoImage) updateMetaTag("og:image", seoImage, "property");
     updateMetaTag("og:url", currentUrl, "property");
     updateMetaTag("og:type", seoType, "property");
     updateMetaTag("og:site_name", "Raga Dental - Dr. Baskaran", "property");
@@ -76,10 +76,10 @@ export function SEO({ title, description, keywords, image, type, noindex, canoni
     updateMetaTag("og:locale:alternate", "en_IN", "property");
     
     // Twitter Card tags
-    updateMetaTag("twitter:card", "summary_large_image");
+    updateMetaTag("twitter:card", seoImage ? "summary_large_image" : "summary");
     updateMetaTag("twitter:title", optimizedTitle);
     updateMetaTag("twitter:description", seoDescription);
-    updateMetaTag("twitter:image", seoImage);
+    if (seoImage) updateMetaTag("twitter:image", seoImage);
     updateMetaTag("twitter:url", currentUrl);
     updateMetaTag("twitter:site", "@ragadental", "name");
     
