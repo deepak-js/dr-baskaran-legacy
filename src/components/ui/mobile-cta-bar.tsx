@@ -6,14 +6,14 @@ export function MobileCTABar() {
       <div className="flex items-center gap-2 px-4 py-3">
         <a
           href="tel:+919500979886"
-          className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-md border border-primary text-primary font-medium text-sm transition-colors active:bg-primary/10"
+          className="btn-rainbow-glow flex-1 flex items-center justify-center gap-2 py-2.5 rounded-md border-2 bg-background text-primary font-semibold text-sm"
         >
           <Phone className="w-4 h-4" />
           Call Now
         </a>
         <a
           href="/contact"
-          className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-md bg-primary text-primary-foreground font-medium text-sm transition-colors active:bg-primary/90"
+          className="btn-rainbow-glow flex-1 flex items-center justify-center gap-2 py-2.5 rounded-md border-2 bg-gradient-to-r from-pink-500 via-amber-500 to-blue-500 text-white font-semibold text-sm"
         >
           <Calendar className="w-4 h-4" />
           Book Appointment
