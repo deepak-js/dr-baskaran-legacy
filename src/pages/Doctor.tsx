@@ -12,8 +12,8 @@ export default function Doctor() {
   return (
     <Layout>
       <SEO
-        title="Dr. Baskaran - Best Dentist & Implantologist in Thanjavur | 25+ Years Experience"
-        description="Dr. Baskaran is the best dentist and implantologist in Thanjavur, Tamil Nadu. With 25+ years of clinical experience, NYU training, and expertise in dental implants, laser dentistry, and digital dentistry. Founder of Raga Dental."
+        title="Dr. Baskaran — Top Implantologist, Thanjavur"
+        description="Founder of Raga Dental. 25+ years, NYU-trained implantologist in Thanjavur specializing in implants, laser & digital dentistry."
         keywords="Dr. Baskaran, best dentist Thanjavur, best implantologist Thanjavur, dentist Thanjavur, dental implants Thanjavur, NYU trained dentist, laser dentistry Thanjavur, digital dentistry Thanjavur, experienced dentist Thanjavur"
       />
       {/* Hero */}

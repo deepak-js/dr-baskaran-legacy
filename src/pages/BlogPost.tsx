@@ -1,4 +1,34 @@
+import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+
+function ArticleJsonLd({ post, url }: { post: { title: string; excerpt: string; author: string; publishedDate: string; updatedDate?: string; image?: string; tags: string[] }; url: string }) {
+  useEffect(() => {
+    const data = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.excerpt,
+      datePublished: post.publishedDate,
+      dateModified: post.updatedDate || post.publishedDate,
+      author: { "@type": "Person", name: post.author },
+      publisher: {
+        "@type": "Organization",
+        name: "Raga Dental",
+        logo: { "@type": "ImageObject", url: "https://dr-baskaran-legacy.lovable.app/favicon.svg" },
+      },
+      mainEntityOfPage: { "@type": "WebPage", "@id": url },
+      keywords: post.tags.join(", "),
+      ...(post.image ? { image: post.image } : {}),
+    };
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.id = "article-jsonld";
+    script.text = JSON.stringify(data);
+    document.head.appendChild(script);
+    return () => { script.remove(); };
+  }, [post, url]);
+  return null;
+}
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
@@ -32,7 +62,7 @@ export default function BlogPost() {
 
   const currentUrl = typeof window !== "undefined" 
     ? window.location.href 
-    : `https://www.ragadental.com/blog/${post.slug}`;
+    : `https://dr-baskaran-legacy.lovable.app/blog/${post.slug}`;
 
   // Get related posts (same category, excluding current)
   const relatedPosts = blogPosts
@@ -42,12 +72,12 @@ export default function BlogPost() {
   return (
     <Layout>
       <SEO
-        title={`${post.title} | Dr. Baskaran - Raga Dental`}
-        description={post.excerpt}
+        title={post.title.length > 55 ? post.title.slice(0, 55) : `${post.title} | Raga Dental`}
+        description={post.excerpt.length > 158 ? post.excerpt.slice(0, 155) + '...' : post.excerpt}
         keywords={post.tags.join(", ")}
-        image={post.image || `https://www.ragadental.com/dr-baskaran-portrait.jpg`}
         type="article"
       />
+      <ArticleJsonLd post={post} url={currentUrl} />
 
       {/* Back Link */}
       <section className="pt-32 pb-8">

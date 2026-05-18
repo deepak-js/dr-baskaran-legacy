@@ -14,8 +14,8 @@ export default function Implantology() {
   return (
     <Layout>
       <SEO
-        title="Dental Implants in Thanjavur | Best Implantologist Dr. Baskaran - Raga Dental"
-        description="Best dental implants in Thanjavur by Dr. Baskaran. Navigation-guided and semi-robotic implant systems for precision, longevity, and biological harmony. 25+ years of implantology expertise at Raga Dental."
+        title="Dental Implants in Thanjavur — Dr. Baskaran"
+        description="Navigation-guided & semi-robotic dental implants by Dr. Baskaran. 25+ years of precision implantology at Raga Dental, Thanjavur."
         keywords="dental implants Thanjavur, implantologist Thanjavur, Dr. Baskaran implants, navigation-guided implants Thanjavur, semi-robotic implants Thanjavur, best implantologist Thanjavur, dental implant surgery Thanjavur"
       />
       {/* Hero with Image */}

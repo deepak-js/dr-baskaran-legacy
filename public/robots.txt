@@ -90,7 +90,11 @@ Allow: /
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://www.ragadental.com/sitemap.xml
+Sitemap: https://dr-baskaran-legacy.lovable.app/sitemap.xml
+
+# Disallow internal admin route
+User-agent: *
+Disallow: /admin
 
 # Disallow admin or private areas (if any)
 # Disallow: /admin/

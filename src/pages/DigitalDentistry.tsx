@@ -14,8 +14,8 @@ export default function DigitalDentistry() {
   return (
     <Layout>
       <SEO
-        title="Digital Dentistry in Thanjavur | Advanced Digital Dental Technology - Dr. Baskaran"
-        description="Digital dentistry in Thanjavur by Dr. Baskaran at Raga Dental. Fully digital diagnostics and workflows ensuring precision, predictability, and safety. Best digital dentistry clinic in Thanjavur."
+        title="Digital Dentistry in Thanjavur — Dr. Baskaran"
+        description="Fully digital diagnostics & workflows in Thanjavur by Dr. Baskaran — precision, predictability & safety at Raga Dental."
         keywords="digital dentistry Thanjavur, digital dental technology Thanjavur, Dr. Baskaran digital dentistry, CAD/CAM dentistry Thanjavur, digital dental impressions Thanjavur"
       />
       {/* Hero with Image */}

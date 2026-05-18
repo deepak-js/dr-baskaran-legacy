@@ -6,14 +6,16 @@ interface LazyImageProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, 'onAn
   alt: string;
   className?: string;
   placeholder?: string;
+  eager?: boolean;
 }
 
-export function LazyImage({ src, alt, className = "", placeholder, ...props }: LazyImageProps) {
+export function LazyImage({ src, alt, className = "", placeholder, eager = false, ...props }: LazyImageProps) {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isInView, setIsInView] = useState(false);
+  const [isInView, setIsInView] = useState(eager);
   const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
+    if (eager) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -29,7 +31,7 @@ export function LazyImage({ src, alt, className = "", placeholder, ...props }: L
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [eager]);
 
   return (
     <div ref={imgRef} className={`relative overflow-hidden ${className}`}>
@@ -48,7 +50,8 @@ export function LazyImage({ src, alt, className = "", placeholder, ...props }: L
           animate={{ opacity: isLoaded ? 1 : 0, scale: isLoaded ? 1 : 1.1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           className={`w-full h-full object-cover relative z-10 ${isLoaded ? "" : "opacity-0"}`}
-          loading="lazy"
+          loading={eager ? "eager" : "lazy"}
+          {...(eager ? { fetchPriority: "high" as const, decoding: "async" as const } : {})}
           {...props}
         />
       )}

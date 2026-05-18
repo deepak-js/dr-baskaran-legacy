@@ -12,14 +12,14 @@ interface SEOProps {
 }
 
 // Base URL - Update this to your actual domain
-const BASE_URL = "https://www.ragadental.com";
+const BASE_URL = "https://dr-baskaran-legacy.lovable.app";
 
 // Default SEO data
 const defaultSEO = {
-  title: "Dr. Baskaran - Best Dentist & Implantologist in Thanjavur | Raga Dental",
-  description: "Dr. Baskaran is the best dentist and implantologist in Thanjavur, Tamil Nadu. 25+ years of expertise in dental implants, laser dentistry, and digital dentistry at Raga Dental. World-class precision dentistry with global standards.",
+  title: "Dr. Baskaran — Best Dentist in Thanjavur | Raga Dental",
+  description: "Dr. Baskaran — 25+ years in implants, laser & digital dentistry at Raga Dental, Thanjavur. World-class precision care.",
   keywords: "Dr. Baskaran, best dentist Thanjavur, implantologist Thanjavur, Raga Dental, dental implants Thanjavur, laser dentistry Thanjavur, digital dentistry Thanjavur, best dentist Tamil Nadu, dental tourism India",
-  image: `${BASE_URL}/dr-baskaran-portrait.jpg`,
+  image: "",
   type: "website",
 };
 
@@ -68,7 +68,7 @@ export function SEO({ title, description, keywords, image, type, noindex, canoni
     // Open Graph tags - use actual current URL for sharing
     updateMetaTag("og:title", optimizedTitle, "property");
     updateMetaTag("og:description", seoDescription, "property");
-    updateMetaTag("og:image", seoImage, "property");
+    if (seoImage) updateMetaTag("og:image", seoImage, "property");
     updateMetaTag("og:url", currentUrl, "property");
     updateMetaTag("og:type", seoType, "property");
     updateMetaTag("og:site_name", "Raga Dental - Dr. Baskaran", "property");
@@ -76,10 +76,10 @@ export function SEO({ title, description, keywords, image, type, noindex, canoni
     updateMetaTag("og:locale:alternate", "en_IN", "property");
     
     // Twitter Card tags
-    updateMetaTag("twitter:card", "summary_large_image");
+    updateMetaTag("twitter:card", seoImage ? "summary_large_image" : "summary");
     updateMetaTag("twitter:title", optimizedTitle);
     updateMetaTag("twitter:description", seoDescription);
-    updateMetaTag("twitter:image", seoImage);
+    if (seoImage) updateMetaTag("twitter:image", seoImage);
     updateMetaTag("twitter:url", currentUrl);
     updateMetaTag("twitter:site", "@ragadental", "name");
     
@@ -118,10 +118,10 @@ export function StructuredData() {
     "name": "Raga Dental",
     "alternateName": "Raga Dental Clinic",
     "description": "Raga Dental is a world-class dental clinic in Thanjavur, Tamil Nadu, specializing in dental implants, laser dentistry, and digital dentistry. Led by Dr. Baskaran, a renowned implantologist with 25+ years of experience.",
-    "url": "https://www.ragadental.com",
-    "logo": "https://www.ragadental.com/logo.png",
-    "image": "https://www.ragadental.com/dr-baskaran-portrait.jpg",
-    "telephone": "+91-XXXXX-XXXXX",
+    "url": "https://dr-baskaran-legacy.lovable.app",
+    "logo": "https://dr-baskaran-legacy.lovable.app/logo.png",
+    "image": "https://dr-baskaran-legacy.lovable.app/dr-baskaran-portrait.jpg",
+    "telephone": "+91-95009-79886",
     "email": "info@ragadental.com",
     "address": {
       "@type": "PostalAddress",
@@ -221,7 +221,7 @@ export function StructuredData() {
   const medicalBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
-    "@id": "https://www.ragadental.com/#medicalbusiness",
+    "@id": "https://dr-baskaran-legacy.lovable.app/#medicalbusiness",
     "name": "Raga Dental",
     "medicalSpecialty": [
       {
@@ -258,13 +258,13 @@ export function StructuredData() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://www.ragadental.com"
+        "item": "https://dr-baskaran-legacy.lovable.app"
       },
       ...(location.pathname !== "/" ? [{
         "@type": "ListItem",
         "position": 2,
         "name": location.pathname.split("/").pop()?.replace("-", " ") || "Page",
-        "item": `https://www.ragadental.com${location.pathname}`
+        "item": `https://dr-baskaran-legacy.lovable.app${location.pathname}`
       }] : [])
     ]
   };
@@ -330,19 +330,19 @@ export function StructuredData() {
     const existingScripts = document.querySelectorAll('script[type="application/ld+json"]');
     existingScripts.forEach(script => script.remove());
 
-    // Blog Schema (if on blog page)
-    const blogSchema = location.pathname.startsWith('/blog') ? {
+    // Blog Schema (if on blog index)
+    const blogSchema = location.pathname === '/blog' ? {
       "@context": "https://schema.org",
       "@type": "Blog",
       "name": "Dr. Baskaran - Raga Dental Blog",
       "description": "Expert dental insights, articles, and educational content from Dr. Baskaran at Raga Dental, Thanjavur.",
-      "url": "https://www.ragadental.com/blog",
+      "url": "https://dr-baskaran-legacy.lovable.app/blog",
       "publisher": {
         "@type": "Organization",
         "name": "Raga Dental",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://www.ragadental.com/logo.png"
+          "url": "https://dr-baskaran-legacy.lovable.app/logo.png"
         }
       },
       "author": {
@@ -352,14 +352,17 @@ export function StructuredData() {
       }
     } : null;
 
+    // FAQ schema is only meaningful on the home page where FAQ content renders.
+    const isHome = location.pathname === '/';
+
     // Add all schemas
     const schemas = [
       localBusinessSchema,
       personSchema,
       medicalBusinessSchema,
       breadcrumbSchema,
-      faqSchema,
-      ...(blogSchema ? [blogSchema] : [])
+      ...(isHome ? [faqSchema] : []),
+      ...(blogSchema ? [blogSchema] : []),
     ];
 
     schemas.forEach((schema, index) => {

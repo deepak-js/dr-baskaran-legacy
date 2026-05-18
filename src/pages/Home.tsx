@@ -44,8 +44,8 @@ export default function Home() {
   return (
     <Layout>
       <SEO
-        title="Best Dentist & Implantologist in Thanjavur | Dr. Baskaran - Raga Dental"
-        description="Dr. Baskaran is the best dentist and implantologist in Thanjavur, Tamil Nadu. 25+ years of expertise in dental implants, laser dentistry, and digital dentistry at Raga Dental. World-class precision dentistry with global standards."
+        title="Dr. Baskaran — Best Dentist in Thanjavur"
+        description="Dr. Baskaran — 25+ years in implants, laser & digital dentistry at Raga Dental, Thanjavur. World-class precision care."
         keywords="Dr. Baskaran, best dentist Thanjavur, implantologist Thanjavur, Raga Dental, dental implants Thanjavur, laser dentistry Thanjavur, digital dentistry Thanjavur, best dentist Tamil Nadu, dental tourism India, dental specialist Thanjavur, cosmetic dentist Thanjavur, oral surgeon Thanjavur"
       />
       {/* Hero Section */}
@@ -120,6 +120,9 @@ export default function Home() {
                     alt="Dr. Baskaran, Best Dentist and Chief Implantologist at Raga Dental, Thanjavur, Tamil Nadu"
                     title="Dr. Baskaran - Best Dentist and Implantologist in Thanjavur"
                     className="w-full h-auto object-contain"
+                    eager
+                    width={1200}
+                    height={1500}
                   />
                 </div>
                 <div className="absolute -top-4 -right-4 w-24 h-24 border border-accent/30 rounded-sm hidden lg:block" />

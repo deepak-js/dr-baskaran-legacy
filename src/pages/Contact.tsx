@@ -53,8 +53,8 @@ export default function Contact() {
   return (
     <Layout>
       <SEO
-        title="Contact Dr. Baskaran - Best Dentist in Thanjavur | Raga Dental"
-        description="Contact Dr. Baskaran, the best dentist and implantologist in Thanjavur. Schedule a consultation at Raga Dental for dental implants, laser dentistry, and digital dentistry. Serving patients from India, Europe, Australia, and New Zealand."
+        title="Contact Dr. Baskaran — Raga Dental, Thanjavur"
+        description="Book a consultation with Dr. Baskaran at Raga Dental, Thanjavur for implants, laser & digital dentistry. International patients welcome."
         keywords="contact Dr. Baskaran, Raga Dental contact, dentist Thanjavur contact, dental consultation Thanjavur, book appointment Thanjavur"
       />
       {/* Hero */}

@@ -15,8 +15,8 @@ export default function DentalTourism() {
   return (
     <Layout>
       <SEO
-        title="Dental Tourism in Thanjavur | World-Class Dental Care by Dr. Baskaran - Raga Dental"
-        description="Dental tourism in Thanjavur, Tamil Nadu. Patients from Europe, Australia, New Zealand, and India travel to Raga Dental for world-class dental treatment by Dr. Baskaran. Best dental tourism destination in South India."
+        title="Dental Tourism in Thanjavur — Raga Dental"
+        description="Patients from Europe, Australia, New Zealand & India travel to Raga Dental, Thanjavur for world-class care by Dr. Baskaran."
         keywords="dental tourism Thanjavur, dental tourism India, dental tourism Tamil Nadu, international dental patients Thanjavur, dental travel Thanjavur, affordable dental care India"
       />
       {/* Hero with Image */}

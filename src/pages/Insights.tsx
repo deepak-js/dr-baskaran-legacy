@@ -39,8 +39,8 @@ export default function Insights() {
   return (
     <Layout>
       <SEO
-        title="Dental Insights & Education | Dr. Baskaran - Raga Dental"
-        description="Expert dental insights and educational content from Dr. Baskaran at Raga Dental, Thanjavur. Learn about dental implants, laser dentistry, digital dentistry, and making informed dental decisions."
+        title="Dental Insights — Dr. Baskaran, Raga Dental"
+        description="Expert dental insights from Dr. Baskaran — implants, laser & digital dentistry, and informed dental decisions."
         keywords="dental insights, dental education, dental blog Thanjavur, dental implant information, laser dentistry information, dental decision making, dental knowledge"
       />
       {/* Hero */}

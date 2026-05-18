@@ -12,8 +12,8 @@ export default function Institution() {
   return (
     <Layout>
       <SEO
-        title="Raga Dental - Advanced Dental Clinic in Thanjavur | 7,000 sq.ft Facility"
-        description="Raga Dental is a 7,000 sq.ft world-class dental clinic in Thanjavur, Tamil Nadu. Advanced infrastructure, precision systems, and accountability. Led by Dr. Baskaran with 25+ years of expertise."
+        title="Raga Dental — Advanced Clinic in Thanjavur"
+        description="7,000 sq.ft world-class dental center in Thanjavur. Advanced infrastructure led by Dr. Baskaran, 25+ years of expertise."
         keywords="Raga Dental, dental clinic Thanjavur, advanced dental facility Thanjavur, dental clinic Tamil Nadu, 7000 sqft dental clinic, world-class dental clinic Thanjavur, precision dentistry Thanjavur"
       />
       {/* Hero */}

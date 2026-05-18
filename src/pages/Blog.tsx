@@ -28,8 +28,8 @@ export default function Blog() {
   return (
     <Layout>
       <SEO
-        title="Dental Blog & Articles | Dr. Baskaran - Raga Dental"
-        description="Expert dental insights, articles, and educational content from Dr. Baskaran at Raga Dental, Thanjavur. Learn about dental implants, laser dentistry, digital dentistry, and oral health."
+        title="Dental Blog — Dr. Baskaran, Raga Dental"
+        description="Articles from Dr. Baskaran on implants, laser & digital dentistry, and oral health — Raga Dental, Thanjavur."
         keywords="dental blog, dental articles, dental education, dental insights, dental implants blog, laser dentistry blog, dental health articles, dental care tips"
       />
       
