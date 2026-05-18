@@ -330,8 +330,8 @@ export function StructuredData() {
     const existingScripts = document.querySelectorAll('script[type="application/ld+json"]');
     existingScripts.forEach(script => script.remove());
 
-    // Blog Schema (if on blog page)
-    const blogSchema = location.pathname.startsWith('/blog') ? {
+    // Blog Schema (if on blog index)
+    const blogSchema = location.pathname === '/blog' ? {
       "@context": "https://schema.org",
       "@type": "Blog",
       "name": "Dr. Baskaran - Raga Dental Blog",
@@ -352,14 +352,17 @@ export function StructuredData() {
       }
     } : null;
 
+    // FAQ schema is only meaningful on the home page where FAQ content renders.
+    const isHome = location.pathname === '/';
+
     // Add all schemas
     const schemas = [
       localBusinessSchema,
       personSchema,
       medicalBusinessSchema,
       breadcrumbSchema,
-      faqSchema,
-      ...(blogSchema ? [blogSchema] : [])
+      ...(isHome ? [faqSchema] : []),
+      ...(blogSchema ? [blogSchema] : []),
     ];
 
     schemas.forEach((schema, index) => {
