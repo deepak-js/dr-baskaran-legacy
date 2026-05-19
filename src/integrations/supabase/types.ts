@@ -14,6 +14,60 @@ export type Database = {
   }
   public: {
     Tables: {
+      blog_posts: {
+        Row: {
+          author: string
+          author_role: string
+          category: string
+          content_html: string
+          created_at: string
+          excerpt: string
+          featured: boolean
+          id: string
+          image_url: string | null
+          published_at: string
+          read_time: number
+          slug: string
+          tags: string[]
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author?: string
+          author_role?: string
+          category?: string
+          content_html: string
+          created_at?: string
+          excerpt?: string
+          featured?: boolean
+          id?: string
+          image_url?: string | null
+          published_at?: string
+          read_time?: number
+          slug: string
+          tags?: string[]
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author?: string
+          author_role?: string
+          category?: string
+          content_html?: string
+          created_at?: string
+          excerpt?: string
+          featured?: boolean
+          id?: string
+          image_url?: string | null
+          published_at?: string
+          read_time?: number
+          slug?: string
+          tags?: string[]
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       consultation_requests: {
         Row: {
           country: string
