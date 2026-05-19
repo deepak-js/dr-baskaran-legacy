@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { format } from "date-fns";
-import { Eye, RefreshCw, LogOut, Lock } from "lucide-react";
+import { Eye, RefreshCw, LogOut, Lock, Copy, Webhook, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Table,
   TableBody,
@@ -30,6 +31,49 @@ import { useToast } from "@/hooks/use-toast";
 
 const ADMIN_PASSWORD = "raga2025admin";
 
+const WEBHOOK_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/publish-blog-post`;
+
+const SAMPLE_PAYLOAD = {
+  title: "How Long Do Dental Implants Really Last? A Clinical Perspective",
+  slug: "how-long-do-dental-implants-last",
+  category: "Implantology",
+  tags: ["dental implants", "longevity", "osseointegration"],
+  image_url: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=1200",
+  hero_image_alt: "Close-up of a titanium dental implant model",
+  author: "Dr. Baskaran",
+  author_role: "Chief Implantologist, Raga Dental",
+  meta_title: "Dental Implant Longevity Explained | Raga Dental",
+  meta_description: "Clinical answer to how long dental implants last, with the factors that decide 10 vs 30+ year outcomes.",
+  excerpt: "An evidence-based look at the biological and surgical factors that determine whether implants last a decade or a lifetime.",
+  content_html: "<p>Dental implants are designed as a permanent restorative solution, but their actual lifespan depends on a chain of clinical and patient factors.</p><h2 id='osseointegration'>The role of osseointegration</h2><p>The titanium fixture fuses with bone over 8–12 weeks. This biological bond is the single biggest predictor of long-term success.</p><h2 id='factors'>What determines longevity</h2><ul><li><strong>Bone quality</strong> at the implant site</li><li><strong>Surgical precision</strong> and guided placement</li><li><strong>Oral hygiene</strong> and recall visits</li><li><strong>Systemic health</strong> — diabetes, smoking, bisphosphonates</li></ul><h2 id='outcomes'>Documented outcomes</h2><p>Peer-reviewed 20-year follow-up studies report survival rates above 90% in well-maintained cases. Failures cluster in the first 18 months when they occur.</p>",
+  internal_links: [
+    { anchor: "guided placement", url: "/implantology" },
+    { anchor: "recall visits", url: "/contact" }
+  ],
+  external_links: [
+    { anchor: "peer-reviewed 20-year follow-up studies", url: "https://pubmed.ncbi.nlm.nih.gov/?term=dental+implant+20+year+survival" }
+  ],
+  faq: [
+    { question: "How long do dental implants last on average?", answer: "Well-maintained implants routinely last 20+ years, with documented cases beyond 30 years. Crowns on top may need replacement every 10–15 years." },
+    { question: "What is the most common reason implants fail?", answer: "Peri-implantitis — inflammation from biofilm — is the leading cause. It is largely preventable with hygiene and recall visits." },
+    { question: "Can smokers get dental implants?", answer: "Yes, but smoking measurably lowers success rates. We counsel cessation before and during healing." }
+  ],
+  eeat: {
+    author_bio: "Implantologist with 20+ years of full-arch and complex rehabilitation experience at Raga Dental, Thanjavur.",
+    author_credentials: ["BDS", "MDS Prosthodontics", "Fellow ICOI"],
+    experience_note: "Based on over 5,000 implant placements documented across the Raga Dental clinical archive.",
+    reviewed_by: "Dr. Baskaran",
+    reviewer_credentials: "Chief Implantologist",
+    medically_reviewed_date: "2026-05-19",
+    sources: [
+      { title: "Branemark, P-I. Osseointegration and its experimental background.", url: "https://pubmed.ncbi.nlm.nih.gov/6352924/" },
+      { title: "Moraschini V, et al. Long-term survival of dental implants.", url: "https://pubmed.ncbi.nlm.nih.gov/25467739/" }
+    ]
+  },
+  featured: true,
+  status: "published"
+};
+
 interface ConsultationRequest {
   id: string;
   first_name: string;
@@ -42,6 +86,15 @@ interface ConsultationRequest {
   created_at: string;
 }
 
+interface DbBlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  category: string;
+  published_at: string;
+  status: string;
+}
+
 export default function Admin() {
   const { toast } = useToast();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -50,12 +103,14 @@ export default function Admin() {
   const [loading, setLoading] = useState(false);
   const [selectedRequest, setSelectedRequest] = useState<ConsultationRequest | null>(null);
   const [filterStatus, setFilterStatus] = useState<string>("all");
+  const [blogPosts, setBlogPosts] = useState<DbBlogPost[]>([]);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (password === ADMIN_PASSWORD) {
       setIsAuthenticated(true);
       fetchRequests();
+      fetchBlogPosts();
     } else {
       toast({ title: "Invalid Password", description: "Please try again.", variant: "destructive" });
     }
@@ -75,6 +130,30 @@ export default function Admin() {
       setRequests(data || []);
     }
     setLoading(false);
+  };
+
+  const fetchBlogPosts = async () => {
+    const { data, error } = await supabase
+      .from("blog_posts")
+      .select("id, title, slug, category, published_at, status")
+      .order("published_at", { ascending: false });
+    if (!error) setBlogPosts((data || []) as DbBlogPost[]);
+  };
+
+  const deleteBlogPost = async (id: string) => {
+    if (!confirm("Delete this post? This cannot be undone.")) return;
+    const { error } = await supabase.from("blog_posts").delete().eq("id", id);
+    if (error) {
+      toast({ title: "Delete failed", description: error.message, variant: "destructive" });
+    } else {
+      toast({ title: "Post deleted" });
+      setBlogPosts((prev) => prev.filter((p) => p.id !== id));
+    }
+  };
+
+  const copy = (text: string, label: string) => {
+    navigator.clipboard.writeText(text);
+    toast({ title: `${label} copied` });
   };
 
   const updateStatus = async (id: string, newStatus: string) => {
@@ -163,6 +242,13 @@ export default function Admin() {
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+        <Tabs defaultValue="consultations" className="w-full">
+          <TabsList className="mb-6">
+            <TabsTrigger value="consultations">Consultations</TabsTrigger>
+            <TabsTrigger value="blog">Blog Webhook</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="consultations">
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
           {[
@@ -242,6 +328,98 @@ export default function Admin() {
             </TableBody>
           </Table>
         </div>
+          </TabsContent>
+
+          <TabsContent value="blog">
+            <div className="space-y-6">
+              <div className="bg-background border rounded-lg p-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <Webhook className="w-5 h-5 text-primary" />
+                  <h2 className="text-lg font-semibold">n8n Blog Publishing Webhook</h2>
+                </div>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Configure an <strong>HTTP Request</strong> node in n8n with the settings below.
+                  Any successful POST publishes the post immediately at <code>/blog/&lt;slug&gt;</code>.
+                </p>
+
+                <div className="space-y-4">
+                  <Field label="Method" value="POST" onCopy={copy} />
+                  <Field label="URL" value={WEBHOOK_URL} onCopy={copy} />
+                  <Field label="Authentication" value="None (uses custom header below)" onCopy={copy} />
+                  <Field label="Header name" value="x-webhook-secret" onCopy={copy} />
+                  <Field label="Header value (the secret you saved)" value="(stored as BLOG_WEBHOOK_SECRET — paste the same value you saved into n8n)" onCopy={copy} />
+                  <Field label="Header name (2)" value="Content-Type" onCopy={copy} />
+                  <Field label="Header value (2)" value="application/json" onCopy={copy} />
+                  <Field label="Send Query Parameters" value="OFF" onCopy={copy} />
+                  <Field label="Send Body" value="ON · Body Content Type: JSON · Specify Body: Using JSON" onCopy={copy} />
+                </div>
+              </div>
+
+              <div className="bg-background border rounded-lg p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="font-semibold">Sample JSON body (paste into n8n)</h3>
+                  <Button variant="outline" size="sm" onClick={() => copy(JSON.stringify(SAMPLE_PAYLOAD, null, 2), "Sample payload")}>
+                    <Copy className="w-4 h-4 mr-1" /> Copy JSON
+                  </Button>
+                </div>
+                <pre className="text-xs bg-muted rounded-md p-4 overflow-auto max-h-96">
+{JSON.stringify(SAMPLE_PAYLOAD, null, 2)}
+                </pre>
+                <p className="text-xs text-muted-foreground mt-3">
+                  Required fields: <code>title</code>, <code>content_html</code>. Everything else has sensible defaults.
+                  Includes <strong>FAQ</strong> (renders accordion + FAQ schema) and <strong>E-E-A-T</strong> (author credentials, medical reviewer, sources).
+                </p>
+              </div>
+
+              <div className="bg-background border rounded-lg p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="font-semibold">Published posts ({blogPosts.length})</h3>
+                  <Button variant="outline" size="sm" onClick={fetchBlogPosts}>
+                    <RefreshCw className="w-4 h-4 mr-1" /> Refresh
+                  </Button>
+                </div>
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Title</TableHead>
+                      <TableHead className="hidden md:table-cell">Category</TableHead>
+                      <TableHead className="hidden sm:table-cell">Published</TableHead>
+                      <TableHead className="w-20"></TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {blogPosts.length === 0 ? (
+                      <TableRow>
+                        <TableCell colSpan={4} className="text-center py-8 text-muted-foreground text-sm">
+                          No posts published via webhook yet.
+                        </TableCell>
+                      </TableRow>
+                    ) : (
+                      blogPosts.map((p) => (
+                        <TableRow key={p.id}>
+                          <TableCell>
+                            <a href={`/blog/${p.slug}`} target="_blank" rel="noopener noreferrer" className="font-medium hover:text-primary">
+                              {p.title}
+                            </a>
+                          </TableCell>
+                          <TableCell className="hidden md:table-cell text-muted-foreground text-sm">{p.category}</TableCell>
+                          <TableCell className="hidden sm:table-cell text-muted-foreground text-sm">
+                            {format(new Date(p.published_at), "MMM d, yyyy")}
+                          </TableCell>
+                          <TableCell>
+                            <Button variant="ghost" size="icon" onClick={() => deleteBlogPost(p.id)}>
+                              <Trash2 className="w-4 h-4 text-destructive" />
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))
+                    )}
+                  </TableBody>
+                </Table>
+              </div>
+            </div>
+          </TabsContent>
+        </Tabs>
       </main>
 
       {/* Detail Dialog */}
@@ -299,6 +477,18 @@ export default function Admin() {
           )}
         </DialogContent>
       </Dialog>
+    </div>
+  );
+}
+
+function Field({ label, value, onCopy }: { label: string; value: string; onCopy: (v: string, l: string) => void }) {
+  return (
+    <div className="grid grid-cols-[180px_1fr_auto] gap-3 items-center">
+      <p className="text-xs text-muted-foreground uppercase tracking-wide">{label}</p>
+      <code className="text-xs bg-muted px-3 py-2 rounded break-all">{value}</code>
+      <Button variant="ghost" size="sm" onClick={() => onCopy(value, label)}>
+        <Copy className="w-3.5 h-3.5" />
+      </Button>
     </div>
   );
 }
