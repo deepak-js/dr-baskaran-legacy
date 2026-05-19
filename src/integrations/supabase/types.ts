@@ -21,13 +21,21 @@ export type Database = {
           category: string
           content_html: string
           created_at: string
+          eeat: Json
           excerpt: string
+          external_links: Json
+          faq: Json
           featured: boolean
+          hero_image_alt: string | null
           id: string
           image_url: string | null
+          internal_links: Json
+          meta_description: string | null
+          meta_title: string | null
           published_at: string
           read_time: number
           slug: string
+          status: string
           tags: string[]
           title: string
           updated_at: string
@@ -38,13 +46,21 @@ export type Database = {
           category?: string
           content_html: string
           created_at?: string
+          eeat?: Json
           excerpt?: string
+          external_links?: Json
+          faq?: Json
           featured?: boolean
+          hero_image_alt?: string | null
           id?: string
           image_url?: string | null
+          internal_links?: Json
+          meta_description?: string | null
+          meta_title?: string | null
           published_at?: string
           read_time?: number
           slug: string
+          status?: string
           tags?: string[]
           title: string
           updated_at?: string
@@ -55,13 +71,21 @@ export type Database = {
           category?: string
           content_html?: string
           created_at?: string
+          eeat?: Json
           excerpt?: string
+          external_links?: Json
+          faq?: Json
           featured?: boolean
+          hero_image_alt?: string | null
           id?: string
           image_url?: string | null
+          internal_links?: Json
+          meta_description?: string | null
+          meta_title?: string | null
           published_at?: string
           read_time?: number
           slug?: string
+          status?: string
           tags?: string[]
           title?: string
           updated_at?: string
