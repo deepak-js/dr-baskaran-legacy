@@ -1,7 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
+import DOMPurify from "isomorphic-dompurify";
+import { useBlogPost } from "@/hooks/useBlogPosts";
+import { ShieldCheck, BookMarked, ExternalLink } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
-function ArticleJsonLd({ post, url }: { post: { title: string; excerpt: string; author: string; publishedDate: string; updatedDate?: string; image?: string; tags: string[] }; url: string }) {
+function ArticleJsonLd({ post, url, faq }: { post: { title: string; excerpt: string; author: string; publishedDate: string; updatedDate?: string; image?: string; tags: string[] }; url: string; faq?: { question: string; answer: string }[] }) {
   useEffect(() => {
     const data = {
       "@context": "https://schema.org",
@@ -25,14 +34,30 @@ function ArticleJsonLd({ post, url }: { post: { title: string; excerpt: string; 
     script.id = "article-jsonld";
     script.text = JSON.stringify(data);
     document.head.appendChild(script);
-    return () => { script.remove(); };
-  }, [post, url]);
+
+    let faqScript: HTMLScriptElement | null = null;
+    if (faq && faq.length) {
+      faqScript = document.createElement("script");
+      faqScript.type = "application/ld+json";
+      faqScript.id = "faq-jsonld";
+      faqScript.text = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faq.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: f.answer },
+        })),
+      });
+      document.head.appendChild(faqScript);
+    }
+    return () => { script.remove(); faqScript?.remove(); };
+  }, [post, url, faq]);
   return null;
 }
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
-import { getBlogPostBySlug, blogPosts } from "@/data/blogPosts";
 import { SocialShare } from "@/components/ui/social-share";
 import { Calendar, Clock, ArrowLeft, Tag, User, BookOpen } from "lucide-react";
 import { LazyImage } from "@/components/ui/lazy-image";
@@ -45,8 +70,18 @@ const fadeIn = {
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
-  const post = slug ? getBlogPostBySlug(slug) : undefined;
+  const { post, posts, loading } = useBlogPost(slug);
 
+  const sanitizedContent = useMemo(
+    () => (post ? DOMPurify.sanitize(post.content, {
+      ADD_ATTR: ["target", "rel", "id"],
+    }) : ""),
+    [post]
+  );
+
+  if (loading && !post) {
+    return <Layout><div className="pt-32 pb-16 container-institutional">Loading…</div></Layout>;
+  }
   if (!post) {
     return <NotFound />;
   }
@@ -65,19 +100,19 @@ export default function BlogPost() {
     : `https://dr-baskaran-legacy.lovable.app/blog/${post.slug}`;
 
   // Get related posts (same category, excluding current)
-  const relatedPosts = blogPosts
+  const relatedPosts = posts
     .filter(p => p.category === post.category && p.id !== post.id)
     .slice(0, 3);
 
   return (
     <Layout>
       <SEO
-        title={post.title.length > 55 ? post.title.slice(0, 55) : `${post.title} | Raga Dental`}
-        description={post.excerpt.length > 158 ? post.excerpt.slice(0, 155) + '...' : post.excerpt}
+        title={post.metaTitle || (post.title.length > 55 ? post.title.slice(0, 55) : `${post.title} | Raga Dental`)}
+        description={post.metaDescription || (post.excerpt.length > 158 ? post.excerpt.slice(0, 155) + '...' : post.excerpt)}
         keywords={post.tags.join(", ")}
         type="article"
       />
-      <ArticleJsonLd post={post} url={currentUrl} />
+      <ArticleJsonLd post={post} url={currentUrl} faq={post.faq} />
 
       {/* Back Link */}
       <section className="pt-32 pb-8">
@@ -200,8 +235,84 @@ export default function BlogPost() {
             <div
               className="prose prose-lg max-w-none dark:prose-invert prose-headings:font-serif prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-a:text-primary"
               itemProp="articleBody"
-              dangerouslySetInnerHTML={{ __html: post.content }}
+              dangerouslySetInnerHTML={{ __html: sanitizedContent }}
             />
+
+            {/* FAQ Section */}
+            {post.faq && post.faq.length > 0 && (
+              <div className="mt-12 pt-8 border-t border-border">
+                <h2 className="heading-section mb-6 flex items-center gap-2">
+                  <BookOpen className="h-6 w-6 text-primary" /> Frequently Asked Questions
+                </h2>
+                <Accordion type="single" collapsible className="bg-card rounded-lg border border-border px-6">
+                  {post.faq.map((f, i) => (
+                    <AccordionItem key={i} value={`faq-${i}`}>
+                      <AccordionTrigger className="text-left font-serif text-lg">
+                        {f.question}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground leading-relaxed">
+                        {f.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            )}
+
+            {/* E-E-A-T trust block */}
+            {post.eeat && (post.eeat.author_bio || post.eeat.reviewed_by || (post.eeat.sources?.length ?? 0) > 0) && (
+              <div className="mt-12 pt-8 border-t border-border">
+                <div className="bg-card border border-border rounded-lg p-6 space-y-4">
+                  <div className="flex items-center gap-2 text-primary">
+                    <ShieldCheck className="h-5 w-5" />
+                    <h3 className="heading-subsection">About this article</h3>
+                  </div>
+
+                  {post.eeat.author_bio && (
+                    <div>
+                      <p className="label-caps mb-1">Author</p>
+                      <p className="text-sm text-muted-foreground">
+                        <span className="font-medium text-foreground">{post.author}</span>
+                        {post.eeat.author_credentials?.length ? `, ${post.eeat.author_credentials.join(", ")}` : ""} — {post.eeat.author_bio}
+                      </p>
+                    </div>
+                  )}
+
+                  {post.eeat.experience_note && (
+                    <div>
+                      <p className="label-caps mb-1">Experience</p>
+                      <p className="text-sm text-muted-foreground">{post.eeat.experience_note}</p>
+                    </div>
+                  )}
+
+                  {post.eeat.reviewed_by && (
+                    <div>
+                      <p className="label-caps mb-1">Medically reviewed by</p>
+                      <p className="text-sm text-muted-foreground">
+                        <span className="font-medium text-foreground">{post.eeat.reviewed_by}</span>
+                        {post.eeat.reviewer_credentials ? `, ${post.eeat.reviewer_credentials}` : ""}
+                        {post.eeat.medically_reviewed_date ? ` · ${formatDate(post.eeat.medically_reviewed_date)}` : ""}
+                      </p>
+                    </div>
+                  )}
+
+                  {post.eeat.sources && post.eeat.sources.length > 0 && (
+                    <div>
+                      <p className="label-caps mb-2">Sources & references</p>
+                      <ul className="space-y-1 text-sm">
+                        {post.eeat.sources.map((s, i) => (
+                          <li key={i}>
+                            <a href={s.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-primary hover:underline">
+                              {s.title} <ExternalLink className="h-3 w-3" />
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
 
             {/* Tags */}
             {post.tags && post.tags.length > 0 && (
