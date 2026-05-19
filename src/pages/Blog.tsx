@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
-import { blogPosts, getAllCategories } from "@/data/blogPosts";
+import { useBlogPosts } from "@/hooks/useBlogPosts";
 import { Calendar, Clock, ArrowRight, BookOpen, Sparkles, TrendingUp } from "lucide-react";
 import { LazyImage } from "@/components/ui/lazy-image";
 
@@ -12,7 +12,8 @@ const fadeIn = {
 };
 
 export default function Blog() {
-  const categories = getAllCategories();
+  const { posts: blogPosts } = useBlogPosts();
+  const categories = Array.from(new Set(blogPosts.map((p) => p.category))).sort();
   const featuredPosts = blogPosts.filter(post => post.featured);
   const regularPosts = blogPosts.filter(post => !post.featured);
 
