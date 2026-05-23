@@ -10,7 +10,9 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies (including dev dependencies for build)
-RUN npm ci
+# Use npm install instead of npm ci to tolerate lockfile drift
+# (project is primarily managed with bun; package-lock.json may be out of sync)
+RUN npm install --no-audit --no-fund --legacy-peer-deps
 
 # Copy source code
 COPY . .
