@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
-import teamImage from "@/assets/team.jpg";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -32,25 +31,6 @@ export default function Institution() {
               Not a clinic. A system built on precision, process, and
               accountability.
             </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Team Image */}
-      <section className="pb-16">
-        <div className="container-institutional">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9] overflow-hidden bg-muted"
-          >
-            <img
-              src={teamImage}
-              alt="The Raga Dental team"
-              className="w-full h-full object-cover object-[center_20%]"
-            />
           </motion.div>
         </div>
       </section>
