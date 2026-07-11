@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
-import drBaskaranClinic from "@/assets/dr-baskaran-clinic.jpg";
+import drBaskaranHero from "@/assets/dr-baskaran-hero.jpeg";
+
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -51,7 +52,7 @@ export default function Doctor() {
             >
               <div className="aspect-[3/4] overflow-hidden bg-muted">
                 <img
-                  src={drBaskaranClinic}
+                  src={drBaskaranHero}
                   alt="Dr. Baskaran, Best Dentist and Implantologist at Raga Dental, Thanjavur"
                   title="Dr. Baskaran - Best Dentist in Thanjavur"
                   className="w-full h-full object-cover object-top"
