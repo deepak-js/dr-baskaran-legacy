@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
-import drBaskaranClinic from "@/assets/dr-baskaran-clinic.jpg";
+import drBaskaranHero from "@/assets/dr-baskaran-hero.jpeg";
+
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
