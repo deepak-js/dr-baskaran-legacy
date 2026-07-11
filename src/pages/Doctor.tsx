@@ -52,7 +52,7 @@ export default function Doctor() {
             >
               <div className="aspect-[3/4] overflow-hidden bg-muted">
                 <img
-                  src={drBaskaranClinic}
+                  src={drBaskaranHero}
                   alt="Dr. Baskaran, Best Dentist and Implantologist at Raga Dental, Thanjavur"
                   title="Dr. Baskaran - Best Dentist in Thanjavur"
                   className="w-full h-full object-cover object-top"
