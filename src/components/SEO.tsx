@@ -63,7 +63,7 @@ export function SEO({ title, description, keywords, image, type, noindex, canoni
     // Primary meta tags
     updateMetaTag("description", seoDescription);
     updateMetaTag("keywords", seoKeywords);
-    updateMetaTag("robots", noindex ? "noindex, nofollow" : "index, follow");
+    updateMetaTag("robots", "noindex, nofollow");
     
     // Open Graph tags - use actual current URL for sharing
     updateMetaTag("og:title", optimizedTitle, "property");
